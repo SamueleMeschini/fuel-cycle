@@ -51,19 +51,19 @@ eta6 = 0.95; % DS
 N_dot = 8.99e-7; % Tritium burnt [kg/s]
 f_b = 0.02; % burnup fraction
 TBR = 1.08;
-I_s_0 = 1.5; % [kg] startup inventory
+I_s_0 = 1.5; %  startup inventory [kg]
 
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
 AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
-I_reserve = N_dot / f_b * q * t_res; % [kg] reserve inventory
+I_reserve = N_dot / f_b * q * t_res; %  reserve inventory [kg]
 t_d = 2;
 
 % Define model to be run
 model = "fuelCycle.slx";
 accuracy = 0.01; % accuracy when computing the required TBR 
-simtime = 3 * 8760 * 3600; % simulation time [s]
+sim_time = 3 * 8760 * 3600; % simulation time [s]
 runMode = "single" % single or iteration
 TBR = 1.06; % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
@@ -83,7 +83,9 @@ if strcmp(runMode,"single")
     out = sim(model); 
     % Checking that I_st > 0 for every t once the 
     % simulation is done is a good idea!
-    
+    header = ['time[s]', 'blanket inventory[kg]', 'TES inventory [kg]', 'ISS inventory [kg]', 'storage inventory [kg]'];
+    writematrix(header,'results/results.csv');
+    writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results.csv', "WriteMode","append");
 elseif strcmp(runMode,"iteration")
     %Iterative search for the required TBR and start-up inventory
     utilities_fc.find_tbr(I_s_0, I_reserve, t_d, TBR, model, accuracy)
