@@ -32,14 +32,12 @@ T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
 fp3 = 1e-4;
 fp4 = 1e-4;
 
-%From component to component
-
-% The relative fractions from HX to components are preserved wrt Abdou's model: 60% to FW, 39% to
-% divertors, 1% to blanket and 0.01% to DS.
-
-f13 = 0.6;
-f1_4 = 0.39; % use the underscore for f14 to avoid shadowing
+%From component to component - Fractions from HX to components taken from
+% (Kuang, 2018)
+f51 = 0.33; % HX to blanket
+f53 = 0.33; % HX to FW
 f56 = 1e-4; % HX to DS
+f54 = 1 - f51 - f53 - f56; % HX to div
 f96 = 0.1; % ISS to DS
 f_dir = 0.3; % DIR fraction
 
