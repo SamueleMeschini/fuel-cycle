@@ -133,10 +133,10 @@ classdef utilities
             ylim([0 230])
         end
 
-        function [epsi,f_b, f_dir, AF, t_p, tau8,tau9,T8,T9,eta2,t_d] = sampleDesignSpace(num_sim)
+        function [epsi,TBE, f_dir, AF, t_p, tau8,tau9,T8,T9,eta2,t_d] = sampleDesignSpace(num_sim)
             lambda = 1.73e-9; %12.33 y half-life
             epsi = rand(num_sim)*9e-4 + 1e-4;
-            f_b = (rand(num_sim)*4.5+0.5)/100; % from 0.5% to 5%
+            TBE = (rand(num_sim)*4.5+0.5)/100; % from 0.5% to 5%
             f_dir = rand(num_sim); % 0-1
             AF = rand(num_sim)*30 + 69.99; % from 30% to 99.99%
             t_p = (rand(num_sim)*11 + 1)*3600; % 1-12h
@@ -155,16 +155,16 @@ classdef utilities
 %             AF = M(:,1);
 %             epsi = M(:,2);
 %             eta_tes = M(:,3);
-%             f_b = M(:,4);
+%             TBE = M(:,4);
 %             f_dir = M(:,5);
 %             t_d = M(:,6);
 %             t_p = M(:,7)/3600;
 %             TBR_req = M(:,10);
 %             I_st = M(:,10);
-%             x = [ AF,epsi,eta_tes,f_b,f_dir,t_d,t_p,TBR_req,];
+%             x = [ AF,epsi,eta_tes,TBE,f_dir,t_d,t_p,TBR_req,];
             opts = detectImportOptions(filename);
-            opts = setvartype(opts,{'AF','epsi','eta_tes','f_b','f_dir','t_d','t_p','TBR_req'},'double');
-            opts.SelectedVariableNames = {'AF','epsi','eta_tes','f_b','f_dir','t_d','t_p','TBR_req'};
+            opts = setvartype(opts,{'AF','epsi','eta_tes','TBE','f_dir','t_d','t_p','TBR_req'},'double');
+            opts.SelectedVariableNames = {'AF','epsi','eta_tes','TBE','f_dir','t_d','t_p','TBR_req'};
             T = readtable(filename,opts);
             T.t_p = T.t_p/3600; % convert in hours
             p = parallelplot(T);
@@ -202,8 +202,8 @@ function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, HX_inventory] = 
             t_d_req = doubling_time;
             TBR = TBR_start;
             I_s_0 = I_s_0_start;
-            f_b = TBE_array(i)
-            I_reserve = N_dot / f_b * q * t_res;
+            TBE = TBE_array(i)
+            I_reserve = N_dot / TBE * q * t_res;
             [out(i), I_startup(i), dummy, blanket_inventory(i), tes_inventory(i)] = utilities.find_tbr(I_s_0, I_reserve, t_d_req, TBR_start, model, TBR_accuracy, inventory_accuracy);
             writematrix(header,'results/results.csv', "WriteMode","overwrite");
             writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results/results.csv', "WriteMode","append");

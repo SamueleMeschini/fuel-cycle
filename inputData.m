@@ -47,11 +47,11 @@ eta6 = 0.95;
 
 % General parameters
 N_dot = 8.99e-7; % Tritium burnt [kg/s]
-f_b = 0.02; % burnup fraction
+TBE = 0.02; % burnup fraction
 
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
 AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
-I_reserve = N_dot / f_b * q * t_res; %  reserve inventory [kg]
+I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
 t_d = 2;

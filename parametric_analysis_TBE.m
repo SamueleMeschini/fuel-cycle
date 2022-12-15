@@ -1,4 +1,4 @@
-TBR_start = 1.08; % TBR - If runMode = "single" this is fixed
+TBR_start = 1.06; % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
 I_s_0_start = 1.5; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess          
