@@ -34,7 +34,7 @@ classdef utilities
                         iteration = iteration + 1;
                         TBR = TBR + accuracy
                         disp(iteration)
-                        t_d = doublingTime(I_s_0, out);
+                        t_d = utilities.doublingTime(I_s_0, out);
                         margin = min(I_storage - I_reserve);
                         blanket_inventory = (max(I_bz)); % kg
                         tes_inventory = (max(I_tes)); % kg
@@ -68,7 +68,7 @@ classdef utilities
         end
 
 %% For basic simulations
-        function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, out] = find_tbr_basic(I_s_0, I_reserve, t_d_req, TBR_start, model, accuracy)
+        function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, out] = find_tbr_basic(I_s_0, I_reserve, t_d_req, TBR_start, model, TBR_accuracy)
             TBR = TBR_start;
             assignin("base", "TBR", TBR) % save the value of TBR in the workspace, otherwise Simulink does not read the value computed in the function!
             iteration = 0;
@@ -82,7 +82,7 @@ classdef utilities
                         out = sim(model);
                         I_storage = out.I_11;
                         iteration = iteration + 1;
-                        TBR = TBR + accuracy
+                        TBR = TBR + TBR_accuracy
                         disp(iteration)
                         t_d = doublingTime(I_s_0, out);
                         margin = min(I_storage - I_reserve);
@@ -109,7 +109,7 @@ classdef utilities
                         end 
                 end
         end
-
+%% Additional functions
         function dummy = plot_startup_vs_reserve(I_st, I_res)
             % Startup vs reserve inventory
             x = 0:3000;
@@ -190,6 +190,36 @@ classdef utilities
         f_he = TBE./(2*Sigma*(1-TBE));
         P_f_ratio = (1 - (2*f_he_div/eta_he)./(1 + 2 * f_he_div / eta_he)).^2;
     end
+
+%% Parametric analysis
+function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, HX_inventory] = parametric_TBE(TBR_start, I_s_0_start, doubling_time, TBR_accuracy, inventory_accuracy)
+        run('inputData.m')
+        model = "fuelCycle.slx";
+        TBR_accuracy = TBR_accuracy;
+        inventory_accuracy = inventory_accuracy;
+        TBE_array = [0.1, 0.5, 1, 2, 3, 4, 5, 10]/100; % TBE [-]
+        for i=1:numel(TBE_array)
+            t_d_req = doubling_time;
+            TBR = TBR_start;
+            I_s_0 = I_s_0_start;
+            f_b = TBE_array(i)
+            I_reserve = N_dot / f_b * q * t_res;
+            [out(i), I_startup(i), dummy, blanket_inventory(i), tes_inventory(i)] = utilities.find_tbr(I_s_0, I_reserve, t_d_req, TBR_start, model, TBR_accuracy, inventory_accuracy);
+            writematrix(header,'results/results.csv', "WriteMode","overwrite");
+            writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results/results.csv', "WriteMode","append");
+        end
+end
+
+function td = doublingTime(I_storage_0, simOut)
+    t = simOut.tout;
+    I_s = simOut.I_11;
+    index = find(I_s>2*I_storage_0, 1); % MODIFICA QUA find the first element for which the storage inventory is twice the initial inventoryy
+    td = t(index) / 3600 / 24 / 365; % years
+    if isempty(td)
+        fprintf("\n No doubling time \n")
+    end 
+end 
+
     end
 end
 
