@@ -3,20 +3,23 @@ clear all
 % Load input data
 run('inputData.m')
 
+% Do not store data from inspector - avoid memory issues
+Simulink.sdi.setAutoArchiveMode(false);
+Simulink.sdi.setArchiveRunLimit(0);
+
 % Define model to be run
 model = "fuelCycle.slx";
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01;
 sim_time = 3 * 8760 * 3600; % simulation time [s]
-runMode = "iteration" % single, iteration or parametric analysis
-parametric_variable = 'TBE';
+runMode = "parametric" % single, iteration or parametric analysis
+parametric_variable = 'AF';
 
-TBR = 1.08; % TBR - If runMode = "single" this is fixed
+TBR = 1.05; % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
 I_s_0 = 1.5; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess
-
-
+             
 % If you know the required TBR and the start-up inventory, run in "single"
 % mode. If you don't know them, run in "iteration" mode, find the required
 % TBR and the start-up inventory for a given configuration, and then run a
@@ -36,6 +39,7 @@ elseif strcmp(runMode,"iteration")
     %Iterative search for the required TBR and start-up inventory
     utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy)
 elseif strcmp(runMode,'parametric')
+    mkdir(strcat('results/'), parametric_variable)
     run(strcat('parametric_analysis_',parametric_variable,'.m'))
 else
     fprintf("Enter a valid run mode \n")
