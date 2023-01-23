@@ -5,7 +5,7 @@ for j=1:numel(TBE_array)
     I_reserve = N_dot / TBE * q * t_res;
     for i=1:numel(tau1_array)
         if TBE == 0.005
-            TBR = 1.2;
+            TBR = 1.23;
         elseif TBE == 0.01
             TBR = 1.12;
         elseif TBE == 0.02
