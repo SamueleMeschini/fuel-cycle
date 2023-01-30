@@ -7,8 +7,8 @@ tau4 = 1000; % Divertor
 tau5 = 1000; % HX
 tau6 = 3600; % Detritiation system
 tau7 = 600; % Vacuum pump 
-tau8 = 0.1*3600; % Fuel clean-up - tau8+tau9 = 4h from Abdou's paper
-tau9 = 3.9*3600; % ISS -  tau8+tau9 = 4h from Abdou's paper
+tau8 = 1.*3600; % Fuel clean-up - tau8+tau9 = 4h from Abdou's paper
+tau9 = 3.*3600; % ISS -  tau8+tau9 = 4h from Abdou's paper
 tau10 = 1*3600;
 tau12 = 100; % Membrane separation
 % Decay constant
@@ -52,6 +52,6 @@ TBE = 0.02; % burnup fraction
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
-AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
+AF = 50; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
-t_d = 5;
+t_d = 1;

@@ -21,6 +21,6 @@ for j=1:numel(TBE_array)
         Simulink.sdi.clear;
     end
     header = {'t_blanket [h]','TBR_req','I_startup [kg]','Blanket_inventory [g]'};
-    writecell(header,strcat('results/t_blanket/','TBE=',string(TBE*100),'%.csv'), "WriteMode","overwrite", 'Delimiter',','); % Use writecell because writematrix does not add the delimiter between strings 
-    writematrix([(tau1_array/3600)',out(:,j), I_startup(:,j), blanket_inventory(:,j)*1000], strcat('results/t_blanket/','TBE=',string(TBE*100),'%.csv'), "WriteMode","append");  
+    writecell(header,strcat('results/t_blanket/','TBE=',string(sprintf("%1.1f",TBE*100)),'%.csv'), "WriteMode","overwrite", 'Delimiter',','); % Use writecell because writematrix does not add the delimiter between strings 
+    writematrix([(tau1_array/3600)',out(:,j), I_startup(:,j), blanket_inventory(:,j)*1000], strcat('results/t_blanket/','TBE=',string(sprintf("%1.1f",TBE*100)),'%.csv'), "WriteMode","append");  
 end
