@@ -12,7 +12,7 @@ model = "fuelCycle.slx";
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01;
 sim_time = 3 * 8760 * 3600; % simulation time [s]
-runMode = "single" % single, iteration or parametric analysis
+runMode = "iteration" % single, iteration or parametric analysis
 parametric_variable = 'f_dir';
 
 TBR = 1.1; % TBR - If runMode = "single" this is fixed

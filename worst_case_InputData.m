@@ -14,7 +14,7 @@ tau12 = 100; % Membrane separation
 % Decay constant
 lambda = 1.73e-9; %12.33 y half-life
 % Non-radioactive losses fraction
-epsi = 1e-3;
+epsi = 1e-4;
 % Effective residence time
 T1 = 1/((1 + epsi)/tau1 + lambda); % Blanket
 T2 = 1/((1 + epsi)/tau2 + lambda); % TES
@@ -39,7 +39,7 @@ f53 = 0.33; % HX to FW
 f56 = 1e-4; % HX to DS
 f54 = 1 - f51 - f53 - f56; % HX to div
 f96 = 0.1; % ISS to DS
-f_dir = 0.3; % DIR fraction
+f_dir = 0.; % DIR fraction
 
 % Components' efficiency
 eta2 = 0.95;
@@ -47,11 +47,11 @@ eta6 = 0.95;
 
 % General parameters
 N_dot = 8.99e-7; % Tritium burnt [kg/s]
-TBE = 0.02; % burnup fraction
+TBE = 0.005; % 
 
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
-AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
+AF = 50; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
 t_d = 2;
