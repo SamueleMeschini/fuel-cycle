@@ -14,7 +14,7 @@ tau12 = 100; % Membrane separation
 % Decay constant
 lambda = 1.73e-9; %12.33 y half-life
 % Non-radioactive losses fraction
-epsi = 1e-3;
+epsi = 1e-4;
 % Effective residence time
 T1 = 1/((1 + epsi)/tau1 + lambda); % Blanket
 T2 = 1/((1 + epsi)/tau2 + lambda); % TES

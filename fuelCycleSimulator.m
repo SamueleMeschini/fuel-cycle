@@ -3,21 +3,22 @@ clear all
 % Load input data
 run('inputData.m')
 
-% Do not store data from inspector - avoid memory issues
+% Do not store data from inspector - avoid memory issues - it doesn't
+% always work
 Simulink.sdi.setAutoArchiveMode(false);
 Simulink.sdi.setArchiveRunLimit(0);
 
 % Define model to be run
-model = "fuelCycle.slx";
+model = "fuelCycle_Abdou.slx";
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01;
 sim_time = 3 * 8760 * 3600; % simulation time [s]
-runMode = "iteration" % single, iteration or parametric analysis
-parametric_variable = 'f_dir';
+runMode = "single" % single, iteration or parametric analysis
+parametric_variable = 'epsi';
 
-TBR = 1.1; % TBR - If runMode = "single" this is fixed
+TBR = 1.07; % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 1.57; % startup inventory [kg] - If runMode = "single" this is fixed
+I_s_0 = 1.4; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess
              
 % If you know the required TBR and the start-up inventory, run in "single"
@@ -29,9 +30,12 @@ I_s_0 = 1.57; % startup inventory [kg] - If runMode = "single" this is fixed
 if strcmp(runMode,"single")
     %Single simulation with fixed TBR and start-up inventory
     out = sim(model); 
-    header = {'time [s]', 'blanket inventory [kg]', 'TES inventory [kg]', 'ISS inventory [kg]', 'storage inventory [kg]'};
-    writecell(header,'results/inventories.csv', "WriteMode","overwrite", "Delimiter",",");
-    writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
+%     header = {'time [s]', 'blanket inventory [kg]', 'TES inventory [kg]', 'ISS inventory [kg]', 'storage inventory [kg]'};
+    header = {'time [s]', 'storage inventory [kg]'};
+    writecell(header,'results/inflection_w_o_reserve.csv', "WriteMode","overwrite", "Delimiter",",");
+%     writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
+    writematrix([out.tout, out.I_11], 'results/inflection_w_o_reserve.csv', "WriteMode","append", "Delimiter",",");
+
 elseif strcmp(runMode,"iteration")
     %Iterative search for the required TBR and start-up inventory
     utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy)
