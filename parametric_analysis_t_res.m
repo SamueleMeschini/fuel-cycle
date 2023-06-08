@@ -1,5 +1,6 @@
 t_res_array = [1,2,4,8,16,24,48]*3600; % Availability factor [s]
 TBE_array = [0.5,1,2,5]/100; % TBE [-]
+
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
     for i=1:numel(t_res_array)
@@ -15,7 +16,7 @@ for j=1:numel(TBE_array)
         I_s_0 = 0.8; 
         t_res = t_res_array(i);
         I_reserve = N_dot / TBE * q * t_res;
-        [out(i,j), I_startup(i,j), ~,~,~, ~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         I_res(i,j) = I_reserve;
         close_system(model); 
         Simulink.sdi.clear;

@@ -1,5 +1,6 @@
 t_d_array = [1,2,5]; % Doubling time [y]
 TBE_array = [0.1, 0.5, 1, 2, 3, 4, 5, 10]/100; % TBE [-]
+
 for j=1:numel(t_d_array)
     for i=1:numel(TBE_array)
         TBE = TBE_array(i);
@@ -15,8 +16,8 @@ for j=1:numel(t_d_array)
             end
         I_s_0 = 0.8; 
         t_d = t_d_array(j);
-        sim_time = (t_d+1)*8760*3600; % update the simulation time
-        [out(i,j), I_startup(i,j), ~,~,~, ~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        sim_time = (t_d+1)*8760*3600; % update the simulation time - use t_d + 1 instead of t_d to avoid errors
+        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         close_system(model); 
         Simulink.sdi.clear;
     end

@@ -1,5 +1,6 @@
 epsi_array = [1e-2, 1e-3, 5e-4, 1e-4, 1e-5, 1e-6, 1e-7]; % Non radioactive loss fraction [-]
 TBE_array = [0.5,1,2,5]/100;  % TBE [-]
+
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
     I_reserve = N_dot / TBE * q * t_res;
@@ -54,7 +55,7 @@ for j=1:numel(TBE_array)
         T8 = 1/((1 + epsi)/tau8 + lambda); % Fuel clean-up
         T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
         T12 = 1/((1 + epsi)/tau12 + lambda);
-        [out(i,j), I_startup(i,j), ~,~,~, ~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         close_system(model); 
         Simulink.sdi.clear;
     end

@@ -1,5 +1,6 @@
 tau1_array = [1,2,8,24,72,240]*3600; % Blanket residence time [s]
 TBE_array = [0.5,1,2,5]/100; % TBE [-]
+
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
     I_reserve = N_dot / TBE * q * t_res;
@@ -16,7 +17,7 @@ for j=1:numel(TBE_array)
         I_s_0 = 0.8; 
         tau1 = tau1_array(i);
         T1 = 1/((1 + epsi)/tau1 + lambda); % Blanket
-        [out(i,j), I_startup(i,j), ~,blanket_inventory(i,j),~, ~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        [out(i,j), I_startup(i,j), ~,blanket_inventory(i,j),~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         close_system(model); 
         Simulink.sdi.clear;
     end

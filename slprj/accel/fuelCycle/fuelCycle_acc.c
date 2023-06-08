@@ -368,55 +368,59 @@ B_6_120_0 = ( _rtB -> B_6_117_0 + _rtB -> B_6_118_0 ) - _rtB -> B_6_119_0 ;
 _rtB -> B_6_121_0 = _rtP -> P_81 * _rtB -> B_6_68_0 ; _rtB -> B_6_122_0 =
 _rtP -> P_82 * _rtB -> B_6_81_0 ; _rtB -> B_6_123_0 = _rtP -> P_83 * _rtB ->
 B_6_62_0 ; _rtB -> B_6_124_0 = ( _rtB -> B_6_121_0 + _rtB -> B_6_122_0 ) -
-_rtB -> B_6_123_0 ; _rtB -> B_6_125_0 = _rtP -> P_84 * _rtB -> B_6_73_0 ;
-_rtB -> B_6_126_0 = _rtP -> P_85 * _rtB -> B_6_68_0 ; _rtB -> B_6_127_0 =
-_rtB -> B_6_125_0 - _rtB -> B_6_126_0 ; _rtB -> B_6_128_0 = _rtP -> P_86 *
-_rtB -> B_6_64_0 ; _rtB -> B_6_129_0 = _rtP -> P_87 * _rtB -> B_6_60_0 ; _rtB
--> B_6_130_0 = _rtB -> B_6_128_0 - _rtB -> B_6_129_0 ; _rtB -> B_6_131_0 =
-_rtP -> P_88 * _rtB -> B_6_60_0 ; _rtB -> B_6_132_0 = _rtP -> P_89 * _rtB ->
-B_6_62_0 ; _rtB -> B_6_133_0 = _rtP -> P_90 * _rtB -> B_6_81_0 ; _rtB ->
-B_6_134_0 = ( _rtB -> B_6_131_0 + _rtB -> B_6_132_0 ) - _rtB -> B_6_133_0 ;
-_rtB -> B_6_135_0 = _rtP -> P_91 * _rtB -> B_6_73_0 ; _rtB -> B_6_136_0 =
-_rtP -> P_92 * _rtB -> B_6_68_0 ; _rtB -> B_6_137_0 = _rtB -> B_6_135_0 -
-_rtB -> B_6_136_0 ; _rtB -> B_6_138_0 = _rtP -> P_93 * _rtB -> B_6_64_0 ;
-_rtB -> B_6_139_0 = _rtP -> P_94 * _rtB -> B_6_70_0 ; _rtB -> B_6_140_0 =
-_rtB -> B_6_138_0 - _rtB -> B_6_139_0 ; _rtB -> B_6_141_0 = _rtP -> P_95 *
-_rtB -> B_6_73_0 ; _rtB -> B_6_142_0 = _rtP -> P_96 * _rtB -> B_6_62_0 ; _rtB
--> B_6_143_0 = _rtP -> P_97 * _rtB -> B_6_70_0 ; isHit = ssIsSampleHit ( S ,
-6 , 0 ) ; if ( isHit != 0 ) { taskTimeV = ssGetTaskTime ( S , 6 ) ; if (
-ssGetTNextWasAdjusted ( S , 6 ) != 0 ) { _rtDW -> nextTime_o =
-_ssGetVarNextHitTime ( S , 4 ) ; } if ( _rtDW -> justEnabled_i != 0 ) { _rtDW
--> justEnabled_i = 0 ; if ( taskTimeV >= _rtP -> P_101 ) { ratio = (
-taskTimeV - _rtP -> P_101 ) / _rtP -> P_99 ; numCycles = ( uint32_T )
-muDoubleScalarFloor ( ratio ) ; if ( muDoubleScalarAbs ( ( real_T ) (
-numCycles + 1U ) - ratio ) < DBL_EPSILON * ratio ) { numCycles ++ ; } _rtDW
--> numCompleteCycles_lt = numCycles ; ratio = ( ( real_T ) numCycles * _rtP
--> P_99 + _rtP -> P_101 ) + _rtP -> P_100 * _rtP -> P_99 / 100.0 ; if (
-taskTimeV < ratio ) { _rtDW -> currentValue_b = 1 ; _rtDW -> nextTime_o =
-ratio ; } else { _rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = ( real_T
-) ( numCycles + 1U ) * _rtP -> P_99 + _rtP -> P_101 ; } } else { _rtDW ->
-numCompleteCycles_lt = _rtP -> P_101 != 0.0 ? - 1 : 0 ; _rtDW ->
-currentValue_b = 0 ; _rtDW -> nextTime_o = _rtP -> P_101 ; } } else if (
-_rtDW -> nextTime_o <= taskTimeV ) { if ( _rtDW -> currentValue_b == 1 ) {
-_rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = ( real_T ) ( _rtDW ->
+_rtB -> B_6_123_0 ; isHit = ssIsSampleHit ( S , 1 , 0 ) ; if ( isHit != 0 ) {
+{ if ( _rtDW -> TAQSigLogging_InsertedFor_Model_at_outport_0_PWORK .
+AQHandles && ssGetLogOutput ( S ) ) { sdiWriteSignal ( _rtDW ->
+TAQSigLogging_InsertedFor_Model_at_outport_0_PWORK . AQHandles ,
+ssGetTaskTime ( S , 1 ) , ( char * ) & _rtB -> B_6_36_0 + 0 ) ; } } } _rtB ->
+B_6_126_0 = _rtP -> P_84 * _rtB -> B_6_73_0 ; _rtB -> B_6_127_0 = _rtP ->
+P_85 * _rtB -> B_6_68_0 ; _rtB -> B_6_128_0 = _rtB -> B_6_126_0 - _rtB ->
+B_6_127_0 ; _rtB -> B_6_129_0 = _rtP -> P_86 * _rtB -> B_6_64_0 ; _rtB ->
+B_6_130_0 = _rtP -> P_87 * _rtB -> B_6_60_0 ; _rtB -> B_6_131_0 = _rtB ->
+B_6_129_0 - _rtB -> B_6_130_0 ; _rtB -> B_6_132_0 = _rtP -> P_88 * _rtB ->
+B_6_60_0 ; _rtB -> B_6_133_0 = _rtP -> P_89 * _rtB -> B_6_62_0 ; _rtB ->
+B_6_134_0 = _rtP -> P_90 * _rtB -> B_6_81_0 ; _rtB -> B_6_135_0 = ( _rtB ->
+B_6_132_0 + _rtB -> B_6_133_0 ) - _rtB -> B_6_134_0 ; _rtB -> B_6_136_0 =
+_rtP -> P_91 * _rtB -> B_6_73_0 ; _rtB -> B_6_137_0 = _rtP -> P_92 * _rtB ->
+B_6_68_0 ; _rtB -> B_6_138_0 = _rtB -> B_6_136_0 - _rtB -> B_6_137_0 ; _rtB
+-> B_6_139_0 = _rtP -> P_93 * _rtB -> B_6_64_0 ; _rtB -> B_6_140_0 = _rtP ->
+P_94 * _rtB -> B_6_70_0 ; _rtB -> B_6_141_0 = _rtB -> B_6_139_0 - _rtB ->
+B_6_140_0 ; _rtB -> B_6_142_0 = _rtP -> P_95 * _rtB -> B_6_73_0 ; _rtB ->
+B_6_143_0 = _rtP -> P_96 * _rtB -> B_6_62_0 ; _rtB -> B_6_144_0 = _rtP ->
+P_97 * _rtB -> B_6_70_0 ; isHit = ssIsSampleHit ( S , 6 , 0 ) ; if ( isHit !=
+0 ) { taskTimeV = ssGetTaskTime ( S , 6 ) ; if ( ssGetTNextWasAdjusted ( S ,
+6 ) != 0 ) { _rtDW -> nextTime_o = _ssGetVarNextHitTime ( S , 4 ) ; } if (
+_rtDW -> justEnabled_i != 0 ) { _rtDW -> justEnabled_i = 0 ; if ( taskTimeV
+>= _rtP -> P_101 ) { ratio = ( taskTimeV - _rtP -> P_101 ) / _rtP -> P_99 ;
+numCycles = ( uint32_T ) muDoubleScalarFloor ( ratio ) ; if (
+muDoubleScalarAbs ( ( real_T ) ( numCycles + 1U ) - ratio ) < DBL_EPSILON *
+ratio ) { numCycles ++ ; } _rtDW -> numCompleteCycles_lt = numCycles ; ratio
+= ( ( real_T ) numCycles * _rtP -> P_99 + _rtP -> P_101 ) + _rtP -> P_100 *
+_rtP -> P_99 / 100.0 ; if ( taskTimeV < ratio ) { _rtDW -> currentValue_b = 1
+; _rtDW -> nextTime_o = ratio ; } else { _rtDW -> currentValue_b = 0 ; _rtDW
+-> nextTime_o = ( real_T ) ( numCycles + 1U ) * _rtP -> P_99 + _rtP -> P_101
+; } } else { _rtDW -> numCompleteCycles_lt = _rtP -> P_101 != 0.0 ? - 1 : 0 ;
+_rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = _rtP -> P_101 ; } } else
+if ( _rtDW -> nextTime_o <= taskTimeV ) { if ( _rtDW -> currentValue_b == 1 )
+{ _rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = ( real_T ) ( _rtDW ->
 numCompleteCycles_lt + 1LL ) * _rtP -> P_99 + _rtP -> P_101 ; } else { _rtDW
 -> numCompleteCycles_lt ++ ; _rtDW -> currentValue_b = 1 ; _rtDW ->
 nextTime_o = ( _rtP -> P_100 * _rtP -> P_99 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_lt * _rtP -> P_99 ) + _rtP -> P_101 ; } }
 _ssSetVarNextHitTime ( S , 4 , _rtDW -> nextTime_o ) ; if ( _rtDW ->
-currentValue_b == 1 ) { _rtB -> B_6_144_0 = _rtP -> P_98 ; } else { _rtB ->
-B_6_144_0 = 0.0 ; } } _rtB -> B_6_145_0 = _rtP -> P_102 * _rtB -> B_6_0_0 ;
-_rtB -> B_6_146_0 = ( ( ( _rtB -> B_6_141_0 + _rtB -> B_6_142_0 ) + _rtB ->
-B_6_143_0 ) - _rtB -> B_6_144_0 ) - _rtB -> B_6_145_0 ; isHit = ssIsSampleHit
+currentValue_b == 1 ) { _rtB -> B_6_145_0 = _rtP -> P_98 ; } else { _rtB ->
+B_6_145_0 = 0.0 ; } } _rtB -> B_6_146_0 = _rtP -> P_102 * _rtB -> B_6_0_0 ;
+_rtB -> B_6_147_0 = ( ( ( _rtB -> B_6_142_0 + _rtB -> B_6_143_0 ) + _rtB ->
+B_6_144_0 ) - _rtB -> B_6_145_0 ) - _rtB -> B_6_146_0 ; isHit = ssIsSampleHit
 ( S , 1 , 0 ) ; if ( isHit != 0 ) { { if ( _rtDW ->
 TAQSigLogging_InsertedFor_Add_at_outport_0_PWORK . AQHandles &&
 ssGetLogOutput ( S ) ) { sdiWriteSignal ( _rtDW ->
 TAQSigLogging_InsertedFor_Add_at_outport_0_PWORK . AQHandles , ssGetTaskTime
-( S , 1 ) , ( char * ) & _rtB -> B_6_146_0 + 0 ) ; } } { if ( _rtDW ->
+( S , 1 ) , ( char * ) & _rtB -> B_6_147_0 + 0 ) ; } } { if ( _rtDW ->
 TAQSigLogging_InsertedFor_PulseGenerator_at_outport_0_PWORK . AQHandles &&
 ssGetLogOutput ( S ) ) { sdiWriteSignal ( _rtDW ->
 TAQSigLogging_InsertedFor_PulseGenerator_at_outport_0_PWORK . AQHandles ,
-ssGetTaskTime ( S , 1 ) , ( char * ) & _rtB -> B_6_144_0 + 0 ) ; } } } isHit
+ssGetTaskTime ( S , 1 ) , ( char * ) & _rtB -> B_6_145_0 + 0 ) ; } } } isHit
 = ssIsSampleHit ( S , 5 , 0 ) ; if ( isHit != 0 ) { taskTimeV = ssGetTaskTime
 ( S , 5 ) ; if ( ssGetTNextWasAdjusted ( S , 5 ) != 0 ) { _rtDW -> nextTime_f
 = _ssGetVarNextHitTime ( S , 3 ) ; } if ( _rtDW -> justEnabled_f != 0 ) {
@@ -438,9 +442,9 @@ numCompleteCycles_p + 1LL ) * _rtP -> P_104 + _rtP -> P_106 ; } else { _rtDW
 = ( _rtP -> P_105 * _rtP -> P_104 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_p * _rtP -> P_104 ) + _rtP -> P_106 ; } }
 _ssSetVarNextHitTime ( S , 3 , _rtDW -> nextTime_f ) ; if ( _rtDW ->
-currentValue_k == 1 ) { _rtB -> B_6_149_0 = _rtP -> P_103 ; } else { _rtB ->
-B_6_149_0 = 0.0 ; } } _rtB -> B_6_150_0 = _rtP -> P_107 * _rtB -> B_6_73_0 ;
-_rtB -> B_6_151_0 = _rtB -> B_6_149_0 - _rtB -> B_6_150_0 ; UNUSED_PARAMETER
+currentValue_k == 1 ) { _rtB -> B_6_150_0 = _rtP -> P_103 ; } else { _rtB ->
+B_6_150_0 = 0.0 ; } } _rtB -> B_6_151_0 = _rtP -> P_107 * _rtB -> B_6_73_0 ;
+_rtB -> B_6_152_0 = _rtB -> B_6_150_0 - _rtB -> B_6_151_0 ; UNUSED_PARAMETER
 ( tid ) ; }
 #define MDL_UPDATE
 static void mdlUpdate ( SimStruct * S , int_T tid ) { B_fuelCycle_T * _rtB ;
@@ -549,22 +553,22 @@ Memory_PreviousInput_e = _rtB -> B_6_54_0 ; } UNUSED_PARAMETER ( tid ) ; }
 static void mdlDerivatives ( SimStruct * S ) { B_fuelCycle_T * _rtB ;
 XDot_fuelCycle_T * _rtXdot ; _rtXdot = ( ( XDot_fuelCycle_T * ) ssGetdX ( S )
 ) ; _rtB = ( ( B_fuelCycle_T * ) _ssGetModelBlockIO ( S ) ) ; _rtXdot ->
-Integrator_CSTATE = _rtB -> B_6_146_0 ; _rtXdot -> integrator_CSTATE = _rtB
+Integrator_CSTATE = _rtB -> B_6_147_0 ; _rtXdot -> integrator_CSTATE = _rtB
 -> B_6_113_0 ; _rtXdot -> integrator_CSTATE_p = _rtB -> B_6_120_0 ; _rtXdot
--> integrator_CSTATE_f = _rtB -> B_6_127_0 ; _rtXdot -> integrator_CSTATE_j =
-_rtB -> B_6_124_0 ; _rtXdot -> integrator_CSTATE_l = _rtB -> B_6_130_0 ;
+-> integrator_CSTATE_f = _rtB -> B_6_128_0 ; _rtXdot -> integrator_CSTATE_j =
+_rtB -> B_6_124_0 ; _rtXdot -> integrator_CSTATE_l = _rtB -> B_6_131_0 ;
 _rtXdot -> integrator_CSTATE_h = _rtB -> B_6_116_0 ; _rtXdot ->
 Integrator_CSTATE_m = _rtB -> B_6_89_0 ; _rtXdot -> Integrator_CSTATE_f =
 _rtB -> B_6_93_0 ; _rtXdot -> Integrator_CSTATE_mr = _rtB -> B_6_96_0 ;
 _rtXdot -> Integrator_CSTATE_g = _rtB -> B_6_100_0 ; _rtXdot ->
 Integrator_CSTATE_p = _rtB -> B_6_103_0 ; _rtXdot -> Integrator_CSTATE_gw =
-_rtB -> B_6_110_0 ; _rtXdot -> Integrator_CSTATE_c = _rtB -> B_6_137_0 ;
-_rtXdot -> Integrator_CSTATE_e = _rtB -> B_6_140_0 ; _rtXdot ->
-Integrator_CSTATE_gf = _rtB -> B_6_151_0 ; _rtXdot -> Integrator_CSTATE_l =
-_rtB -> B_6_134_0 ; } static void mdlInitializeSizes ( SimStruct * S ) {
-ssSetChecksumVal ( S , 0 , 260279713U ) ; ssSetChecksumVal ( S , 1 ,
-1894016086U ) ; ssSetChecksumVal ( S , 2 , 1100594852U ) ; ssSetChecksumVal (
-S , 3 , 174612852U ) ; { mxArray * slVerStructMat = ( NULL ) ; mxArray *
+_rtB -> B_6_110_0 ; _rtXdot -> Integrator_CSTATE_c = _rtB -> B_6_138_0 ;
+_rtXdot -> Integrator_CSTATE_e = _rtB -> B_6_141_0 ; _rtXdot ->
+Integrator_CSTATE_gf = _rtB -> B_6_152_0 ; _rtXdot -> Integrator_CSTATE_l =
+_rtB -> B_6_135_0 ; } static void mdlInitializeSizes ( SimStruct * S ) {
+ssSetChecksumVal ( S , 0 , 4001389666U ) ; ssSetChecksumVal ( S , 1 ,
+1140775871U ) ; ssSetChecksumVal ( S , 2 , 2789139741U ) ; ssSetChecksumVal (
+S , 3 , 1298790090U ) ; { mxArray * slVerStructMat = ( NULL ) ; mxArray *
 slStrMat = mxCreateString ( "simulink" ) ; char slVerChar [ 10 ] ; int status
 = mexCallMATLAB ( 1 , & slVerStructMat , 1 , & slStrMat , "ver" ) ; if (
 status == 0 ) { mxArray * slVerMat = mxGetField ( slVerStructMat , 0 ,

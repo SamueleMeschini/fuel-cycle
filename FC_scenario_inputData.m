@@ -1,4 +1,6 @@
 % Input data required for fuel cycle
+% Fuel cycle advancements scenario (for a detailed description of this
+% scenario see Meschini et al., "Modeling and analysis of the tritium fuel cycle for ARC- and STEP-Class D-T fusion power plants", 2023)
 % Residence times [s]
 tau1 = 1.25*3600; % Blanket
 tau2 = 1*24*3600; % TES

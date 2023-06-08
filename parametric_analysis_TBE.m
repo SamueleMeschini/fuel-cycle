@@ -2,7 +2,6 @@ TBE_array = [0.1, 0.5, 1, 2, 3, 4, 5, 10]/100; % TBE [-]
 t_p_array = [1,4,12]*3600; % Tritium processing time [s]
 mkdir('results/TBEtd2y')
 
-
 for j=1:numel(t_p_array)
     t_p = t_p_array(j);
    % Update the processing times
@@ -38,7 +37,7 @@ for j=1:numel(t_p_array)
             end 
         end
         I_reserve = N_dot / TBE * q * t_res;
-        [out(i,j), I_startup(i,j), ~,~,~, ~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         close_system(model); 
         Simulink.sdi.clear;
     end

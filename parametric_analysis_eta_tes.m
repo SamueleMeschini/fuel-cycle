@@ -1,5 +1,6 @@
 eta_tes_array = [0.4,0.6,0.8,0.9,0.95]; % Tritium extraction efficiency
 TBE_array = [0.5,1,2,5]/100; % TBE [-]
+
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
     I_reserve = N_dot / TBE * q * t_res;

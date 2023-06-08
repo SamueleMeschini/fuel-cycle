@@ -36,13 +36,13 @@ B_6_107_0 ; real_T B_6_108_0 ; real_T B_6_109_0 ; real_T B_6_110_0 ; real_T
 B_6_111_0 ; real_T B_6_112_0 ; real_T B_6_113_0 ; real_T B_6_114_0 ; real_T
 B_6_115_0 ; real_T B_6_116_0 ; real_T B_6_117_0 ; real_T B_6_118_0 ; real_T
 B_6_119_0 ; real_T B_6_120_0 ; real_T B_6_121_0 ; real_T B_6_122_0 ; real_T
-B_6_123_0 ; real_T B_6_124_0 ; real_T B_6_125_0 ; real_T B_6_126_0 ; real_T
-B_6_127_0 ; real_T B_6_128_0 ; real_T B_6_129_0 ; real_T B_6_130_0 ; real_T
-B_6_131_0 ; real_T B_6_132_0 ; real_T B_6_133_0 ; real_T B_6_134_0 ; real_T
-B_6_135_0 ; real_T B_6_136_0 ; real_T B_6_137_0 ; real_T B_6_138_0 ; real_T
-B_6_139_0 ; real_T B_6_140_0 ; real_T B_6_141_0 ; real_T B_6_142_0 ; real_T
-B_6_143_0 ; real_T B_6_144_0 ; real_T B_6_145_0 ; real_T B_6_146_0 ; real_T
-B_6_149_0 ; real_T B_6_150_0 ; real_T B_6_151_0 ; } B_fuelCycle_T ; typedef
+B_6_123_0 ; real_T B_6_124_0 ; real_T B_6_126_0 ; real_T B_6_127_0 ; real_T
+B_6_128_0 ; real_T B_6_129_0 ; real_T B_6_130_0 ; real_T B_6_131_0 ; real_T
+B_6_132_0 ; real_T B_6_133_0 ; real_T B_6_134_0 ; real_T B_6_135_0 ; real_T
+B_6_136_0 ; real_T B_6_137_0 ; real_T B_6_138_0 ; real_T B_6_139_0 ; real_T
+B_6_140_0 ; real_T B_6_141_0 ; real_T B_6_142_0 ; real_T B_6_143_0 ; real_T
+B_6_144_0 ; real_T B_6_145_0 ; real_T B_6_146_0 ; real_T B_6_147_0 ; real_T
+B_6_150_0 ; real_T B_6_151_0 ; real_T B_6_152_0 ; } B_fuelCycle_T ; typedef
 struct { real_T Memory_PreviousInput ; real_T Memory_PreviousInput_o ; real_T
 Memory_PreviousInput_b ; real_T Memory_PreviousInput_c ; real_T
 Memory_PreviousInput_i ; real_T Memory_PreviousInput_e ; real_T nextTime ;
@@ -86,8 +86,9 @@ AQHandles ; } _asyncqueue_inserted_for_ToWorkspace7_PWORK ; struct { void *
 AQHandles ; } _asyncqueue_inserted_for_ToWorkspace8_PWORK ; struct { void *
 AQHandles ; } _asyncqueue_inserted_for_ToWorkspace9_PWORK ; struct { void *
 AQHandles ; } _asyncqueue_inserted_for_ToWorkspace_PWORK_f ; struct { void *
-AQHandles ; } TAQSigLogging_InsertedFor_Add_at_outport_0_PWORK ; struct {
-void * AQHandles ; }
+AQHandles ; } TAQSigLogging_InsertedFor_Model_at_outport_0_PWORK ; struct {
+void * AQHandles ; } TAQSigLogging_InsertedFor_Add_at_outport_0_PWORK ;
+struct { void * AQHandles ; }
 TAQSigLogging_InsertedFor_PulseGenerator_at_outport_0_PWORK ; int32_T
 justEnabled ; int32_T currentValue ; int32_T justEnabled_e ; int32_T
 currentValue_o ; int32_T justEnabled_d ; int32_T currentValue_f ; int32_T
