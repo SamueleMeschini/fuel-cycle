@@ -79,12 +79,12 @@ MODEL                = fuelCycle
 MODULES              = 
 PRODUCT              = fuelCycle_acc.lib
 MAKEFILE             = fuelCycle.mk
-MATLAB_ROOT          = C:/Program Files/MATLAB/R2022b
-ALT_MATLAB_ROOT      = C:/PROGRA~1/MATLAB/R2022b
-START_DIR            = C:/Users/MESCHI~1.SAM/ONEDRI~1/PhD/FUELCY~1/FUEL-C~1
+MATLAB_ROOT          = C:/Program Files/MATLAB/R2023b
+ALT_MATLAB_ROOT      = C:/PROGRA~1/MATLAB/R2023b
+START_DIR            = C:/Users/smesc/ONEDRI~2/PhD/FUELCY~1/FUEL-C~1
 S_FUNCTIONS_LIB      = 
-NUMST                = 7
-NCSTATES             = 17
+NUMST                = 8
+NCSTATES             = 18
 BUILDARGS            =  OPTS="-DTID01EQ=0"
 MULTITASKING         = 0
 INTEGER_CODE         = 0
@@ -104,7 +104,7 @@ ADDITIONAL_LDFLAGS      =
 DEFINES_CUSTOM          = 
 DEFINES_OTHER           = -DHAVESTDIO -DMDL_REF_SIM_TGT=1
 COMPILE_FLAGS_OTHER     = 
-SYSTEM_LIBS             = -L"C:\Program Files\MATLAB\R2022b\extern\lib\win64\microsoft" libmwipp.lib libut.lib libmwmathutil.lib libmwsl_simtarget_instrumentation.lib libmwsl_simtarget_core.lib libmwsl_fileio.lib libmwsigstream.lib libmwslexec_simlog.lib libmwsl_AsyncioQueue.lib sf_runtime.lib libmwsimulink.lib libmwslexec_simbridge.lib libmwstringutil.lib libemlrt.lib libmwslio_core.lib libmwslio_clients.lib libmwsl_services.lib
+SYSTEM_LIBS             = -L"C:\Program Files\MATLAB\R2023b\extern\lib\win64\microsoft" libmwipp.lib libut.lib libmwmathutil.lib libmwsl_simtarget_instrumentation.lib libmwsl_simtarget_core.lib libmwsl_fileio.lib libmwsigstream.lib libmwslexec_simlog.lib libmwsl_AsyncioQueue.lib sf_runtime.lib libmwsimulink.lib libmwslexec_simbridge.lib libmwstringutil.lib libemlrt.lib libmwslio_core.lib libmwslio_clients.lib libmwsl_services.lib
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 0
 
 #--------------------------- Model and reference models -----------------------
@@ -282,12 +282,18 @@ endif
 %.obj : $(MATLAB_ROOT)/simulink/src/%.c
 	$(CC) -c -Fo$(@F) $(CFLAGS) $<
 
+%.obj : $(MATLAB_ROOT)/toolbox/simulink/blocks/src/%.c
+	$(CC) -c -Fo$(@F) $(CFLAGS) $<
+
 
 
 %.obj : $(MATLAB_ROOT)/rtw/c/src/%.C
 	$(CC) -c -Fo$(@F) $(CFLAGS) $<
 
 %.obj : $(MATLAB_ROOT)/simulink/src/%.C
+	$(CC) -c -Fo$(@F) $(CFLAGS) $<
+
+%.obj : $(MATLAB_ROOT)/toolbox/simulink/blocks/src/%.C
 	$(CC) -c -Fo$(@F) $(CFLAGS) $<
 
 

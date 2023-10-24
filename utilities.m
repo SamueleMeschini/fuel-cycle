@@ -54,3 +54,17 @@ classdef utilities
                         end 
                 end
         end
+     
+
+
+function td = doublingTime(I_storage_0, simOut)
+    t = simOut.tout;
+    I_s = simOut.I_11;
+    index = find(I_s>2*I_storage_0, 1); % MODIFICA QUA find the first element for which the storage inventory is twice the initial inventoryy
+    td = t(index) / 3600 / 24 / 365; % years
+    if isempty(td)
+        fprintf("\n No doubling time \n")
+    end 
+end 
+    end
+end

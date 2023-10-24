@@ -2,8 +2,8 @@
 #define RTW_HEADER_fuelCycle_acc_private_h_
 #include "rtwtypes.h"
 #include "multiword_types.h"
-#include "fuelCycle_acc.h"
 #include "fuelCycle_acc_types.h"
+#include "fuelCycle_acc.h"
 #if !defined(ss_VALIDATE_MEMORY)
 #define ss_VALIDATE_MEMORY(S, ptr)     if(!(ptr)) {\
     ssSetErrorStatus(S, RT_MEMORY_ALLOCATION_ERROR);\

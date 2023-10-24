@@ -7,8 +7,8 @@ tau4 = 1000; % Divertor
 tau5 = 1000; % HX
 tau6 = 3600; % Detritiation system
 tau7 = 600; % Vacuum pump 
-tau8 = 1.*3600; % Fuel clean-up - tau8+tau9 = 4h from Abdou's paper
-tau9 = 3.*3600; % ISS -  tau8+tau9 = 4h from Abdou's paper
+tau8 = 1*3600; % Fuel clean-up - tau8+tau9 = 4h from Abdou's paper
+tau9 = 3*3600; % ISS -  tau8+tau9 = 4h from Abdou's paper
 tau10 = 1*3600;
 tau12 = 100; % Membrane separation
 % Decay constant

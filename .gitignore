@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# matlab files
+.r2022a
+.r2022b
+.exp
+.lib
+.mexw64
+post_process.m
+.asv
