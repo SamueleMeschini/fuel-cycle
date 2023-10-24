@@ -47,7 +47,7 @@ eta2 = 0.95;
 eta6 = 0.95;
 
 % General parameters
-N_dot = 8.99e-7; % Tritium burnt [kg/s]
+N_dot = 9.3e-7; % Tritium burnt [kg/s]
 TBE = 0.1; % TBE
 
 % Reserve inventory
