@@ -12,8 +12,8 @@ model = "fuelCycle.slx";
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
 sim_time = 3 * 8760 * 3600; % simulation time [s]
-runMode = "iteration" % single, iteration or parametric analysis
-parametric_variable = 'epsi'; % name of the variable if performing parametric analysis
+runMode = "parametric" % single, iteration or parametric analysis
+parametric_variable = 'f_p'; % name of the variable if performing parametric analysis
 
 TBR = 1.07; % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess

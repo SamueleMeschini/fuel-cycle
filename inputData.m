@@ -1,9 +1,10 @@
 % Input data required for fuel cycle
+trapping_factor = 1;
 % Residence times [s]
-tau1 = 1.25*3600; % Blanket
+tau1 = 1.25*3600*trapping_factor; % Blanket
 tau2 = 1*24*3600; % TES
-tau3 = 1000; % FW
-tau4 = 1000; % Divertor
+tau3 = 1000*trapping_factor; % FW
+tau4 = 1000*trapping_factor; % Divertor
 tau5 = 1000; % HX
 tau6 = 3600; % Detritiation system
 tau7 = 600; % Vacuum pump 
