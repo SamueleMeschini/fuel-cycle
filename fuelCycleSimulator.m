@@ -1,5 +1,7 @@
 clear all
 
+% Activate trapping
+trapping = true;
 % Load input data
 run('inputData.m')
 
@@ -8,16 +10,22 @@ Simulink.sdi.setAutoArchiveMode(false);
 Simulink.sdi.setArchiveRunLimit(0);
 
 % Define model to be run
-model = "fuelCycle.slx";
+if trapping
+    model = 'fuelCycle_w_trapping.slx';
+    run('inputData_trapping.m')
+else
+    model = "fuelCycle.slx";
+end
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
-sim_time = 3 * 8760 * 3600; % simulation time [s]
-runMode = "parametric" % single, iteration or parametric analysis
-parametric_variable = 'f_p'; % name of the variable if performing parametric analysis
+sim_time = 4*8760*3600; % simulation time [s]
+sample_time = 1000; % sample time for tracked variables [s]
+runMode = "single" % single, iteration or parametric analysis
+parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.07; % TBR - If runMode = "single" this is fixed
+TBR = 1.1 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 1.4; % startup inventory [kg] - If runMode = "single" this is fixed
+I_s_0 = 1.46; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess
              
 % If you know the required TBR and the start-up inventory, run in "single"
@@ -32,10 +40,32 @@ if strcmp(runMode,"single")
 %     components and store them in a matrix. Each inventory is accessible
 %     by out.I_N, where N is the component number as described in the
 %     paper. 
-    header = {'time [s]', 'blanket inventory [kg]', 'TES inventory [kg]', 'ISS inventory [kg]', 'storage inventory [kg]'};
+if trapping == false
+  header = {'time [s]',...
+        'blanket inventory [kg]', ...
+        'TES inventory [kg]', ...
+        'ISS inventory [kg]', ...
+        'storage inventory [kg]', ... 
+        'FW inventory [kg]', ...
+        'div inventory [kg]'}
     writecell(header,'results/inventories.csv', "WriteMode","overwrite", "Delimiter",",");
-    writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
+    writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11, out.I_4, out.I_3], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
 
+else
+
+    header = {'time [s]',...
+        'blanket inventory [kg]', ...
+        'TES inventory [kg]', ...
+        'ISS inventory [kg]', ...
+        'storage inventory [kg]', ... 
+        'FW inventory [kg]', ...
+        'div inventory [kg]', ...
+        'blanket inventory trapped [kg]', ...
+        'FW inventory traped [kg]', ...
+        'div inventory trapped [kg]'};
+    writecell(header,'results/inventories.csv', "WriteMode","overwrite", "Delimiter",",");
+    writematrix([out.tout, (out.I_1 + out.I_1_trapped), out.I_2, out.I_9, out.I_11, (out.I_4_trapped+out.I_4), (out.I_3_trapped+out.I_3), out.I_1, out.I_3, out.I_4], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
+end
 %     In this other case we set the reserve time to 0 and run a simulation
 %     to track the storage inventory without a reserve inventory
 %     header = {'time [s]', 'storage inventory [kg]'};

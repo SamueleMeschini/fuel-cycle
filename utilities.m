@@ -3,7 +3,7 @@ classdef utilities
     %   Detailed explanation goes here
     
     methods(Static)
-        function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, HX_inventory] = find_tbr(I_s_0, I_reserve, t_d_req, TBR_start, model, accuracy, inventory_accuracy)
+        function [TBR, I_s_0, margin, blanket_inventory, tes_inventory, HX_inventory, Div_trapped_inventory, FW_trapped_inventory] = find_tbr(I_s_0, I_reserve, t_d_req, TBR_start, model, accuracy, inventory_accuracy)
             TBR = TBR_start;
             assignin("base", "TBR", TBR) % save the value of TBR in the workspace, otherwise Simulink does not read the value computed in the function!
             iteration = 0;
@@ -27,6 +27,8 @@ classdef utilities
                         blanket_inventory = (max(I_bz)); % kg
                         tes_inventory = (max(I_tes)); % kg
                         HX_inventory = (max(I_hx)); % kg
+                        Div_trapped_inventory = out.I_4_trapped(end); % kg
+                        FW_trapped_inventory = out.I_3_trapped(end); %kg
                         if isempty(t_d)
                             t_d = 20;
                         end 

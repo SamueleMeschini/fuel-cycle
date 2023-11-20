@@ -1,10 +1,9 @@
 % Input data required for fuel cycle
-trapping_factor = 1;
 % Residence times [s]
-tau1 = 1.25*3600*trapping_factor; % Blanket
+tau1 = 1.25*3600; % Blanket
 tau2 = 1*24*3600; % TES
-tau3 = 1000*trapping_factor; % FW
-tau4 = 1000*trapping_factor; % Divertor
+tau3 = 1000; % FW
+tau4 = 1000; % Divertor
 tau5 = 1000; % HX
 tau6 = 3600; % Detritiation system
 tau7 = 600; % Vacuum pump 
@@ -27,7 +26,7 @@ T7 = 1/((1 + epsi)/tau7 + lambda); % Vacuum pump
 T8 = 1/((1 + epsi)/tau8 + lambda); % Fuel clean-up
 T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
 T12 = 1/((1 + epsi)/tau12 + lambda);
-% Flow rate fractions
+T_replacement = 5*8760*3600; % VV replacement time
 
 % Flow rate fractions
 % From plasma to components
@@ -56,3 +55,5 @@ t_res = 3600 * 24; % reserve time
 AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
 t_d = 2;
+
+    

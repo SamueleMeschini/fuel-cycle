@@ -1,0 +1,4 @@
+#ifndef RTW_HEADER_fuelCycle_w_trapping_acc_types_h_
+#define RTW_HEADER_fuelCycle_w_trapping_acc_types_h_
+typedef struct P_fuelCycle_w_trapping_T_ P_fuelCycle_w_trapping_T ;
+#endif
