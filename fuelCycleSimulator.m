@@ -1,7 +1,7 @@
 clear all
 
 % Activate trapping
-trapping = true;
+trapping = false;
 % Load input data
 run('inputData.m')
 
@@ -18,14 +18,13 @@ else
 end
 TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
-sim_time = 4*8760*3600; % simulation time [s]
-sample_time = 1000; % sample time for tracked variables [s]
-runMode = "single" % single, iteration or parametric analysis
+sim_time = 3*8760*3600; % simulation time [s]
+runMode = "iteration" % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.1 % TBR - If runMode = "single" this is fixed
+TBR = 1.06 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 1.46; % startup inventory [kg] - If runMode = "single" this is fixed
+I_s_0 = 1.4; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess
              
 % If you know the required TBR and the start-up inventory, run in "single"
@@ -47,7 +46,7 @@ if trapping == false
         'ISS inventory [kg]', ...
         'storage inventory [kg]', ... 
         'FW inventory [kg]', ...
-        'div inventory [kg]'}
+        'div inventory [kg]'};
     writecell(header,'results/inventories.csv', "WriteMode","overwrite", "Delimiter",",");
     writematrix([out.tout, out.I_1, out.I_2, out.I_9, out.I_11, out.I_4, out.I_3], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
 
@@ -74,7 +73,13 @@ end
 
 elseif strcmp(runMode,"iteration")
     %Iterative search for the required TBR and start-up inventory
+    if trapping
+    utilities.find_tbr_w_trapping(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy)
+
+    else
     utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy)
+
+    end
 
 elseif strcmp(runMode,'parametric')
     if strcmp(parametric_variable,'TBE')
