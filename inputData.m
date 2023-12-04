@@ -26,7 +26,7 @@ T7 = 1/((1 + epsi)/tau7 + lambda); % Vacuum pump
 T8 = 1/((1 + epsi)/tau8 + lambda); % Fuel clean-up
 T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
 T12 = 1/((1 + epsi)/tau12 + lambda);
-T_replacement = 5*8760*3600; % VV replacement time
+T_replacement = 8*8760*3600; % VV replacement time
 
 % Flow rate fractions
 % From plasma to components

@@ -20,7 +20,6 @@ classdef utilities
                         I_tes = out.I_2;
                         I_hx = out.I_5;
                         iteration = iteration + 1;
-                        TBR = TBR + accuracy
                         disp(iteration)
                         t_d = utilities.doublingTime(I_s_0, out);
                         margin = min(I_storage - I_reserve);
@@ -39,17 +38,17 @@ classdef utilities
                             else
                                 I_s_0 = I_s_0 - abs(margin) + inventory_accuracy;  % add 0.05 to avoid numerical issues
                             end
+                        disp("TBR = " + TBR)
                         disp("Doubling time = " + t_d)
                         disp("I_s_0 = " + I_s_0)
                         disp("Minimum difference between storage and reserve " + min(I_storage - I_reserve))
                         disp("Blanket inventory: " + round(max(I_bz)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
-
+                        TBR = TBR + accuracy;
                         if iteration == 1000            
                             iteration = 0;
-                            TBR = TBR_start;
-                            
+                            TBR = TBR_start;                            
                             inner_iteration = inner_iteration + 1;
                             disp(inner_iteration)
                         end 
@@ -74,13 +73,13 @@ classdef utilities
                         I_tes = out.I_2;
                         I_hx = out.I_5;
                         iteration = iteration + 1;
-                        TBR = TBR + accuracy
                         disp(iteration)
                         t_d = utilities.doublingTime(I_s_0, out);
                         margin = min(I_storage - I_reserve);
                         blanket_inventory = (max(I_bz)); % kg
                         tes_inventory = (max(I_tes)); % kg
                         HX_inventory = (max(I_hx)); % kg
+                        bz_trapped_inventory = out.I_1_trapped(end); % kg
                         Div_trapped_inventory = out.I_4_trapped(end); % kg
                         FW_trapped_inventory = out.I_3_trapped(end); %kg
                         if isempty(t_d)
@@ -94,12 +93,14 @@ classdef utilities
                             else
                                 I_s_0 = I_s_0 - abs(margin) + inventory_accuracy;  % add 0.05 to avoid numerical issues
                             end
+                        disp("TBR = " + TBR)
                         disp("Doubling time = " + t_d)
                         disp("I_s_0 = " + I_s_0)
                         disp("Minimum difference between storage and reserve " + min(I_storage - I_reserve))
-                        disp("Blanket inventory: " + round(max(I_bz)*1000, 2) + " g")
+                        disp("Blanket inventory: " + round(max(I_bz + bz_trapped_inventory)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
+                        TBR = TBR + accuracy
 
                         if iteration == 1000            
                             iteration = 0;

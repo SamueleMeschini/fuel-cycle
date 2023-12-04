@@ -1,5 +1,5 @@
-f_permanent_trap_array = [1e-7, 1e-6, 1e-5]; % Permanent trap fraction [-]
-n_trap_array = [1e-10, 1e-9, 1e-8];
+f_permanent_trap_array = [1e-7, 1e-8, 1e-9]; % Permanent trap fraction [-]
+n_trap_array = [1e-2, 1e-3, 1e-4];
 
 TBE = 2/100; % TBE [-]
 
@@ -25,7 +25,7 @@ for j=1:numel(n_trap_array)
         Simulink.sdi.clear;
 
     end
-    f_permanent_trap_array = [1e-7, 1e-6, 1e-5];
+    % f_permanent_trap_array = [1e-7, 1e-6, 1e-5];
     % f_permanent_trap_array = [0.01, 0.1, 0.9];
     header = {parametric_variable,'TBR_req','I_startup [kg]', 'I_div_trapped [kg]', 'I_FW_trapped [kg]'};
     writecell(header,strcat('results/',parametric_variable,'/','n_trap=',string(sprintf("%1.10f",n_trap)),'.csv'), "WriteMode","overwrite", 'Delimiter',','); % Use writecell because writematrix does not add the delimiter between strings 
