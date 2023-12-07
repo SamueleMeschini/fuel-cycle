@@ -8,7 +8,7 @@ N_a = 6.022e23;
 PM_tungsten = 183.8;
 PM_tritium = 3;
 nu_0 = 1e13;
-E_trap_W = 0.87; % eV
+E_trap_W = [0.87, 1, 1.65, 1.85, 2.06]; % eV
 k_B = 8.6e-5; % ev/K 
 
 % Tungsten
@@ -16,15 +16,15 @@ rho_tungsten = 19.3; %g/cm3
 V_tungsten = 0.35e6; % cm3
 T_tungsten = 1100; % K
 nu_detrap = nu_0 * exp(-E_trap_W/(k_B * T_tungsten)); % detrapping rate
-tau_detrap = 1 / nu_detrap* relaxation_coefficient;
+tau_detrap_tungsten = 1 ./ nu_detrap* relaxation_coefficient;
 D_tungsten = 4.1e-7/sqrt(3) * exp(-0.39/(k_B * T_tungsten)) % Diffusion coefficient in tungsten - Dividide by sqrt(Isotope mass)
 a_tungsten = 316e-12; % m - lattice constant
 dd = a_tungsten/2/sqrt(2);
 nu_trap = D_tungsten / dd^2;
-tau_trap = 1/nu_trap * relaxation_coefficient;
+tau_trap_tungsten = 1/nu_trap * relaxation_coefficient;
 n_tungsten = rho_tungsten * V_tungsten / PM_tungsten * N_a;
 n_solute = 6; % Available site for mobile tritium
-n_trap = 1e-4;
+n_trap_tungsten = [0.13e-2, 0.035e-2, 0.1e-2, 0.2e-2, 0.05e-2];
 f_permanent_trap = 1e-7;
 m_u = 1.6e-27; 
 tau_permanent = 100 * 24 *3600;
