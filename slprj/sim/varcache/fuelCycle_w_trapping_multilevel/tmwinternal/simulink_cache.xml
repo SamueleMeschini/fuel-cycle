@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/SlCache/19700101">
+<<<<<<< HEAD
   <slcache.FileAttributes type="slcache.FileAttributes" uuid="432e1608-d523-496d-8ad4-6751bfe1ac7e">
     <checksum>LbK0zea2PZRlE47iwDYQQkE1wdTjYm83DTJ/TUYFCZCU4ZE3n/xzi7Uon2dQXAfVJz7oS7CzjTkPYVnmBjL0/A==</checksum>
+=======
+  <slcache.FileAttributes type="slcache.FileAttributes" uuid="241833ec-3105-448b-b808-a751d2fa7c82">
+    <checksum>7gFthtg7aJ5TIrgWCi7j854Se38NMy4guA08wMGmCir2sFId63jaEemlP3WXODrhF/78pq9Hqw9QoYf/nXUbSg==</checksum>
+>>>>>>> parent of f4e9aa0 (add damage-induced traps)
   </slcache.FileAttributes>
 </MF0>

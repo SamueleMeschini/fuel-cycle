@@ -25,7 +25,7 @@ tau_trap_tungsten = 1/nu_trap * relaxation_coefficient;
 n_tungsten = rho_tungsten * V_tungsten / PM_tungsten * N_a;
 n_solute = 6; % Available site for mobile tritium
 n_trap_tungsten = [0.13e-2, 0.035e-2, 0.1e-2, 0.2e-2, 0.05e-2];
-f_permanent_trap = 0;
+f_permanent_trap = 1e-7;
 m_u = 1.6e-27; 
 tau_permanent = 100 * 24 *3600;
 M_tungsten = V_tungsten * rho_tungsten/1e3; % kg
@@ -63,6 +63,8 @@ n_trap_eurofer = 7e-4;
 n_solute_eurofer = 6;
 
 
+
+
 PM_structural = PM_vcrti;
 rho_structural = rho_vcrti;
 V_structural = 3.5e6; % cm3 - REF: D. Pettinari
@@ -76,6 +78,6 @@ tau_trap_structural = 1/nu_trap_structural * relaxation_coefficient;
 n_structural = rho_structural * V_structural / PM_structural * N_a;
 n_solute = n_solute_vcrti; % Available site for mobile tritium - Assume that V-Cr-TI is BCC
 n_trap_structural= n_trap_vcrti;
-f_permanent_trap_structural = 0;
+f_permanent_trap_structural = 1e-7;
 tau_permanent_structural = 100 * 24 *3600;
 M_structural = V_structural * rho_structural/1e3; % kg
