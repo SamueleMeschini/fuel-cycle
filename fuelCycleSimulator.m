@@ -16,15 +16,15 @@ if trapping
 else
     model = "fuelCycle.slx";
 end
-TBR_accuracy = 0.001; % accuracy when computing the required TBR 
+TBR_accuracy = 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
-sim_time = 4*8760*3600; % simulation time [s]
+sim_time = 2.2*8760*3600; % simulation time [s]
 runMode = "single" % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.11 % TBR - If runMode = "single" this is fixed
+TBR = 1.07 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 1.8; % startup inventory [kg] - If runMode = "single" this is fixed
+I_s_0 = 1.45; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess
              
 % If you know the required TBR and the start-up inventory, run in "single"
