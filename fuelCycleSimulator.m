@@ -18,7 +18,7 @@ else
 end
 TBR_accuracy = 0.001; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
-sim_time = 5*8760*3600; % simulation time [s]
+sim_time = 4*8760*3600; % simulation time [s]
 runMode = "single" % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
