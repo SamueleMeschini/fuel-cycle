@@ -1,4 +1,2 @@
-LIBRARY ..\..\..\..\fuelCycle_acc.mexw64
-EXPORTS
-    mexFunction
-    mexfilerequiredapiversion
+_mexFunction
+_mexfilerequiredapiversion

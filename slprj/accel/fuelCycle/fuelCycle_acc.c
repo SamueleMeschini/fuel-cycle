@@ -15,7 +15,7 @@
 #include "fixedpoint.h"
 #define CodeFormat S-Function
 #define AccDefine1 Accelerator_S-Function
-#ifndef __RTW_UTFREE__  
+#ifndef __RTW_UTFREE__  
 extern void * utMalloc ( size_t ) ; extern void utFree ( void * ) ;
 #endif
 boolean_T fuelCycle_acc_rt_TDelayUpdateTailOrGrowBuf ( int_T * bufSzPtr ,
@@ -310,7 +310,7 @@ currentValue = 1 ; _rtDW -> nextTime = ratio ; } else { _rtDW -> currentValue
 0 ; _rtDW -> currentValue = 0 ; _rtDW -> nextTime = _rtP -> P_56 ; } } else
 if ( _rtDW -> nextTime <= taskTimeV ) { if ( _rtDW -> currentValue == 1 ) {
 _rtDW -> currentValue = 0 ; _rtDW -> nextTime = ( real_T ) ( _rtDW ->
-numCompleteCycles + 1LL ) * _rtP -> P_54 + _rtP -> P_56 ; } else { _rtDW ->
+numCompleteCycles + 1L ) * _rtP -> P_54 + _rtP -> P_56 ; } else { _rtDW ->
 numCompleteCycles ++ ; _rtDW -> currentValue = 1 ; _rtDW -> nextTime = ( _rtP
 -> P_55 * _rtP -> P_54 * 0.01 + ( real_T ) _rtDW -> numCompleteCycles * _rtP
 -> P_54 ) + _rtP -> P_56 ; } } _ssSetVarNextHitTime ( S , 2 , _rtDW ->
@@ -334,7 +334,7 @@ nextTime_l = ( real_T ) ( numCycles + 1U ) * _rtP -> P_60 + _rtP -> P_62 ; }
 -> currentValue_o = 0 ; _rtDW -> nextTime_l = _rtP -> P_62 ; } } else if (
 _rtDW -> nextTime_l <= taskTimeV ) { if ( _rtDW -> currentValue_o == 1 ) {
 _rtDW -> currentValue_o = 0 ; _rtDW -> nextTime_l = ( real_T ) ( _rtDW ->
-numCompleteCycles_l + 1LL ) * _rtP -> P_60 + _rtP -> P_62 ; } else { _rtDW ->
+numCompleteCycles_l + 1L ) * _rtP -> P_60 + _rtP -> P_62 ; } else { _rtDW ->
 numCompleteCycles_l ++ ; _rtDW -> currentValue_o = 1 ; _rtDW -> nextTime_l =
 ( _rtP -> P_61 * _rtP -> P_60 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_l * _rtP -> P_60 ) + _rtP -> P_62 ; } }
@@ -367,7 +367,7 @@ numCompleteCycles_e = _rtP -> P_75 != 0.0 ? - 1 : 0 ; _rtDW -> currentValue_f
 = 0 ; _rtDW -> nextTime_i = _rtP -> P_75 ; } } else if ( _rtDW -> nextTime_i
 <= taskTimeV ) { if ( _rtDW -> currentValue_f == 1 ) { _rtDW ->
 currentValue_f = 0 ; _rtDW -> nextTime_i = ( real_T ) ( _rtDW ->
-numCompleteCycles_e + 1LL ) * _rtP -> P_73 + _rtP -> P_75 ; } else { _rtDW ->
+numCompleteCycles_e + 1L ) * _rtP -> P_73 + _rtP -> P_75 ; } else { _rtDW ->
 numCompleteCycles_e ++ ; _rtDW -> currentValue_f = 1 ; _rtDW -> nextTime_i =
 ( _rtP -> P_74 * _rtP -> P_73 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_e * _rtP -> P_73 ) + _rtP -> P_75 ; } }
@@ -415,7 +415,7 @@ numCompleteCycles_f = _rtP -> P_97 != 0.0 ? - 1 : 0 ; _rtDW -> currentValue_d
 = 0 ; _rtDW -> nextTime_if = _rtP -> P_97 ; } } else if ( _rtDW ->
 nextTime_if <= taskTimeV ) { if ( _rtDW -> currentValue_d == 1 ) { _rtDW ->
 currentValue_d = 0 ; _rtDW -> nextTime_if = ( real_T ) ( _rtDW ->
-numCompleteCycles_f + 1LL ) * _rtP -> P_95 + _rtP -> P_97 ; } else { _rtDW ->
+numCompleteCycles_f + 1L ) * _rtP -> P_95 + _rtP -> P_97 ; } else { _rtDW ->
 numCompleteCycles_f ++ ; _rtDW -> currentValue_d = 1 ; _rtDW -> nextTime_if =
 ( _rtP -> P_96 * _rtP -> P_95 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_f * _rtP -> P_95 ) + _rtP -> P_97 ; } }
@@ -458,9 +458,9 @@ P_115 ; } } else { _rtDW -> numCompleteCycles_lt = _rtP -> P_115 != 0.0 ? - 1
 : 0 ; _rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = _rtP -> P_115 ; } }
 else if ( _rtDW -> nextTime_o <= taskTimeV ) { if ( _rtDW -> currentValue_b
 == 1 ) { _rtDW -> currentValue_b = 0 ; _rtDW -> nextTime_o = ( real_T ) (
-_rtDW -> numCompleteCycles_lt + 1LL ) * _rtP -> P_113 + _rtP -> P_115 ; }
-else { _rtDW -> numCompleteCycles_lt ++ ; _rtDW -> currentValue_b = 1 ; _rtDW
--> nextTime_o = ( _rtP -> P_114 * _rtP -> P_113 * 0.01 + ( real_T ) _rtDW ->
+_rtDW -> numCompleteCycles_lt + 1L ) * _rtP -> P_113 + _rtP -> P_115 ; } else
+{ _rtDW -> numCompleteCycles_lt ++ ; _rtDW -> currentValue_b = 1 ; _rtDW ->
+nextTime_o = ( _rtP -> P_114 * _rtP -> P_113 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_lt * _rtP -> P_113 ) + _rtP -> P_115 ; } }
 _ssSetVarNextHitTime ( S , 4 , _rtDW -> nextTime_o ) ; if ( _rtDW ->
 currentValue_b == 1 ) { _rtB -> B_7_102_816 = _rtP -> P_112 ; } else { _rtB
@@ -492,7 +492,7 @@ _rtDW -> numCompleteCycles_p = _rtP -> P_120 != 0.0 ? - 1 : 0 ; _rtDW ->
 currentValue_k = 0 ; _rtDW -> nextTime_f = _rtP -> P_120 ; } } else if (
 _rtDW -> nextTime_f <= taskTimeV ) { if ( _rtDW -> currentValue_k == 1 ) {
 _rtDW -> currentValue_k = 0 ; _rtDW -> nextTime_f = ( real_T ) ( _rtDW ->
-numCompleteCycles_p + 1LL ) * _rtP -> P_118 + _rtP -> P_120 ; } else { _rtDW
+numCompleteCycles_p + 1L ) * _rtP -> P_118 + _rtP -> P_120 ; } else { _rtDW
 -> numCompleteCycles_p ++ ; _rtDW -> currentValue_k = 1 ; _rtDW -> nextTime_f
 = ( _rtP -> P_119 * _rtP -> P_118 * 0.01 + ( real_T ) _rtDW ->
 numCompleteCycles_p * _rtP -> P_118 ) + _rtP -> P_120 ; } }
