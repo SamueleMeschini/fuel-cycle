@@ -22,11 +22,10 @@ sim_time = 2*8760*3600; % simulation time [s]
 runMode = "single"  % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.067 % TBR - If runMode = "single" this is fixed
+TBR = 1.115 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 1.42; % startup inventory [kg] - If runMode = "single" this is fixed
-             %                          If runMode = "iteration" this is the initial guess
-             
+I_s_0 = 1.98; % startup inventory [kg] - If runMode = "single" this is fixed
+             %                          If runMode = "iteration" this is the initial guess             
 % If you know the required TBR and the start-up inventory, run in "single"
 % mode. If you don't know them, run in "iteration" mode, find the required
 % TBR and the start-up inventory for a given configuration, and then run a
@@ -68,11 +67,11 @@ if strcmp(runMode,"single")
         writecell(header,'results/inventories.csv', "WriteMode","overwrite", "Delimiter",",");
         writematrix([out.tout, (out.I_1 + out.I_1_trapped), out.I_2, out.I_9, out.I_11, (out.I_4_trapped+out.I_4), (out.I_3_trapped+out.I_3), out.I_1, out.I_3, out.I_4], 'results/inventories.csv', "WriteMode","append", "Delimiter",",");
     end
-%     In this other case we set the reserve time to 0 and run a simulation
-%     to track the storage inventory without a reserve inventory
-    header = {'time [s]', 'storage inventory [kg]'};
-    writecell(header,'results/inflection_w_o_reserve.csv', "WriteMode","overwrite", "Delimiter",",");
-    writematrix([out.tout, out.I_11], 'results/inflection_w_o_reserve.csv', "WriteMode","append", "Delimiter",",");
+% %     In this other case we set the reserve time to 0 and run a simulation
+% %     to track the storage inventory without a reserve inventory
+%     header = {'time [s]', 'storage inventory [kg]'};
+%     writecell(header,'results/inflection_w_o_reserve.csv', "WriteMode","overwrite", "Delimiter",",");
+%     writematrix([out.tout, out.I_11], 'results/inflection_w_o_reserve.csv', "WriteMode","append", "Delimiter",",");
 
 elseif strcmp(runMode,"iteration")
     %Iterative search for the required TBR and start-up inventory
