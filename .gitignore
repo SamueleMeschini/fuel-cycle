@@ -136,6 +136,7 @@ dmypy.json
 .mexw64
 post_process.m
 .asv
+.csv
 
 # misc
 results/inventories.csv
