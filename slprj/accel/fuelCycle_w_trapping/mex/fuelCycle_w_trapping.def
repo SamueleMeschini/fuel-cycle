@@ -1,4 +1,0 @@
-LIBRARY ..\..\..\..\fuelCycle_w_trapping_acc.mexw64
-EXPORTS
-    mexFunction
-    mexfilerequiredapiversion
