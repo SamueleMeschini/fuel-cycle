@@ -26,7 +26,7 @@ T7 = 1/((1 + epsi)/tau7 + lambda); % Vacuum pump
 T8 = 1/((1 + epsi)/tau8 + lambda); % Fuel clean-up
 T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
 T12 = 1/((1 + epsi)/tau12 + lambda);
-T_replacement = 1.9*8760*3600; % VV replacement time
+T_replacement = 20*8760*3600; % VV replacement time
 MTTR = 90 * 24 * 3600;
 T_restart = T_replacement + MTTR;
 Recover_length = 30 * 24 * 8760;
@@ -58,7 +58,7 @@ TBE = 0.02; % burnup fraction
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
-AF = 95; % for AF_model, use 0-100, for non AF_models, use 0-1;
+AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
 t_d = 2;
 T_deliver = t_d * 365 * 24 * 3600 - 1 * 24 * 3600;

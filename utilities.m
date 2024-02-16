@@ -100,7 +100,7 @@ classdef utilities
                         disp("Blanket inventory: " + round(max(I_bz + bz_trapped_inventory)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
-                        TBR = TBR + accuracy
+                        TBR = TBR + accuracy;
 
                         if iteration == 1000            
                             iteration = 0;
