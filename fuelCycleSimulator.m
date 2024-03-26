@@ -11,7 +11,7 @@ Simulink.sdi.setArchiveRunLimit(0);
 
 % Define model to be run
 if trapping
-    model = 'fuelCycle_w_trapping_multilevel_shutdown.slx';
+    model = 'fuelCycle_w_trapping_multilevel.slx';
     run('inputData_trapping.m')
 else
     model = "fuelCycle.slx";
@@ -22,9 +22,9 @@ sim_time = 2.5*8760*3600; % simulation time [s]
 runMode = "single"  % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.095 % TBR - If runMode = "single" this is fixed
+TBR = 1.21 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
-I_s_0 = 2.2; % startup inventory [kg] - If runMode = "single" this is fixed
+I_s_0 = 1.98; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess             
 % If you know the required TBR and the start-up inventory, run in "single"
 % mode. If you don't know them, run in "iteration" mode, find the required

@@ -18,13 +18,13 @@ V_tungsten = 0.35e6; % cm3
 T_tungsten = 1000; % K
 n_tungsten = (rho_tungsten*1e6) / PM_tungsten * N_a; % m^-3
 E_trap_W_intrinsic = 1; % eV
-E_trap_W_extrinsic = [1.15, 1.35, 1.65, 1.85]; % eV
-trap_creation_factor_W = [1* layer_thickness_induced_traps/FW_thickness, 0.9, 0.6, 1]*1e28/n_tungsten ; % Damage occurs only in the small layer. Average over all the FW in this way
-n_tungsten_max = [4.75* layer_thickness_induced_traps/FW_thickness, 3.2, 2.5, 6.3]*1e25/n_tungsten; % REF James et al. 2023 - amage occurs only in the small layer. Average over all the FW in this way
+E_trap_W_extrinsic = [1.15, 1.35, 1.65, 1.85, 2.05]; % eV
+trap_creation_factor_W = [9* layer_thickness_induced_traps/FW_thickness, 4.2, 2.5, 5, 1]*1e26/n_tungsten ; % Damage occurs only in the small layer. Average over all the FW in this way
+n_tungsten_max = [6.9* layer_thickness_induced_traps/FW_thickness, 7, 6, 4.7, 2]*1e25/n_tungsten; % REF James et al. 2023 - amage occurs only in the small layer. Average over all the FW in this way
 % n_max_tungsten = [0.035e-2, 0.1e-2, 0.2e-2, 0.05e-2] % REF: Odille et al.
 damage_rate = 20/(8760*3600); %dpa/s
 A_0 = 6.18e-3;
-E_annealing = 0.28; % eV
+E_annealing = [0.24, 0.3]; % eV
 k_B = 8.6e-5; % ev/K 
 E_trap_W = [E_trap_W_intrinsic, E_trap_W_extrinsic];
 % Tungsten
