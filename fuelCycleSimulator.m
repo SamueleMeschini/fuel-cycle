@@ -19,10 +19,10 @@ end
 TBR_accuracy= 0.005; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
 sim_time = 2.5*8760*3600; % simulation time [s]
-runMode = "single"  % single, iteration or parametric analysis
+runMode = "iteration"  % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.21 % TBR - If runMode = "single" this is fixed
+TBR = 1.095 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
 I_s_0 = 1.98; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess             
