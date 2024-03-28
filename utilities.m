@@ -12,6 +12,7 @@ classdef utilities
             I_storage = out.I_11;
             td = 10; % Initial value to enter the loop
                 while(any(I_storage - I_reserve < 0) || iteration == 0 || t_d >  t_d_req)
+                        TBR = TBR + accuracy;
                         assignin("base", "TBR", TBR) % save the value of TBR in the workspace, otherwise Simulink does not read the value computed in the function!
                         assignin("base", "I_s_0", I_s_0)
                         out = sim(model);
@@ -45,7 +46,6 @@ classdef utilities
                         disp("Blanket inventory: " + round(max(I_bz)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
-                        TBR = TBR + accuracy;
                         if iteration == 1000            
                             iteration = 0;
                             TBR = TBR_start;                            
@@ -65,6 +65,7 @@ classdef utilities
             I_storage = out.I_11;
             td = 10; % Initial value to enter the loop
                 while(any(I_storage - I_reserve < 0) || iteration == 0 || t_d >  t_d_req)
+                        TBR = TBR + accuracy
                         assignin("base", "TBR", TBR) % save the value of TBR in the workspace, otherwise Simulink does not read the value computed in the function!
                         assignin("base", "I_s_0", I_s_0)
                         out = sim(model);
@@ -100,7 +101,6 @@ classdef utilities
                         disp("Blanket inventory: " + round(max(I_bz + bz_trapped_inventory)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
-                        TBR = TBR + accuracy
 
                         if iteration == 1000            
                             iteration = 0;

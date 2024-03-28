@@ -1,5 +1,5 @@
-f_p = [1e-4, 1e-3, 1e-2, 1e-1]; % Fraction of plasma to the walls and divertor
-TBE_array = [1,2,5]/100; % TBE [-]
+f_p = [1e-4, 1e-3]; % Fraction of plasma to the walls and divertor
+TBE_array = [2,5]/100; % TBE [-]
 
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
@@ -17,7 +17,7 @@ for j=1:numel(TBE_array)
         I_s_0 = 0.8; 
         fp3 = f_p(i) / 2;
         fp4 = f_p(i) / 2;
-        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
+        [out(i,j), I_startup(i,j), ~,~,~,~] = utilities.find_tbr_w_trapping(I_s_0, I_reserve, t_d, TBR, model, TBR_accuracy, inventory_accuracy);
         close_system(model); 
         Simulink.sdi.clear;
 
