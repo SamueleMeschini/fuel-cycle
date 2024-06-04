@@ -1,0 +1,625 @@
+%implements s7_b0_z4vkg_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(0, 0, "")> %% B_7_108_864
+%<SLibCGIRAccessLocalVar(2, 0, "")> %% B_7_110_880
+%<SLibCGIRAccessLocalVar(4, 0, "")> %% B_7_112_896
+%<SLibCGIRAccessLocalVar(6, 0, "")> %% B_7_114_912
+%<SLibCGIRAccessLocalVar(8, 0, "")> %% B_7_116_928
+%<SLibCGIRAccessLocalVar(10, 0, "")> %% B_7_118_944
+%<SLibCGIRAccessLocalVar(12, 0, "")> %% B_7_120_960
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+B_fuelCycle_T *_rtB;
+DW_fuelCycle_T *_rtDW;
+P_fuelCycle_T *_rtP;
+X_fuelCycle_T *_rtX;
+real_T ratio;
+real_T taskTimeV;
+int32_T isHit;
+uint32_T numCycles;
+boolean_T rtb_B_7_136_1088;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS7B0 = OpaqueTLCBlockFcn("Outputs", 7, 0, 0, 1, 0)
+%assign tlcOutputsFcnOfS7B1 = OpaqueTLCBlockFcn("Outputs", 7, 1, 0, 1, 1)
+%assign tlcOutputsFcnOfS7B3 = OpaqueTLCBlockFcn("Outputs", 7, 3, 0, 1, 2)
+%assign tlcOutputsFcnOfS7B4 = OpaqueTLCBlockFcn("Outputs", 7, 4, 0, 1, 3)
+%assign tlcOutputsFcnOfS7B6 = OpaqueTLCBlockFcn("Outputs", 7, 6, 0, 1, 4)
+%assign tlcOutputsFcnOfS7B7 = OpaqueTLCBlockFcn("Outputs", 7, 7, 0, 1, 5)
+%assign tlcOutputsFcnOfS7B9 = OpaqueTLCBlockFcn("Outputs", 7, 9, 0, 1, 6)
+%assign tlcOutputsFcnOfS7B10 = OpaqueTLCBlockFcn("Outputs", 7, 10, 0, 1, 7)
+%assign tlcOutputsFcnOfS7B12 = OpaqueTLCBlockFcn("Outputs", 7, 12, 0, 1, 8)
+%assign tlcOutputsFcnOfS7B13 = OpaqueTLCBlockFcn("Outputs", 7, 13, 0, 1, 9)
+%assign tlcOutputsFcnOfS7B15 = OpaqueTLCBlockFcn("Outputs", 7, 15, 0, 1, 10)
+%assign tlcOutputsFcnOfS7B16 = OpaqueTLCBlockFcn("Outputs", 7, 16, 0, 1, 11)
+%assign tlcOutputsFcnOfS7B18 = OpaqueTLCBlockFcn("Outputs", 7, 18, 0, 1, 12)
+%assign tlcOutputsFcnOfS7B19 = OpaqueTLCBlockFcn("Outputs", 7, 19, 0, 1, 13)
+%assign tlcOutputsFcnOfS7B21 = OpaqueTLCBlockFcn("Outputs", 7, 21, 0, 1, 14)
+%assign tlcOutputsFcnOfS7B22 = OpaqueTLCBlockFcn("Outputs", 7, 22, 0, 1, 15)
+%assign tlcOutputsFcnOfS7B23 = OpaqueTLCBlockFcn("Outputs", 7, 23, 0, 1, 16)
+%assign tlcOutputsFcnOfS7B24 = OpaqueTLCBlockFcn("Outputs", 7, 24, 0, 1, 17)
+%assign tlcOutputsFcnOfS7B25 = OpaqueTLCBlockFcn("Outputs", 7, 25, 0, 1, 18)
+%assign tlcOutputsFcnOfS7B26 = OpaqueTLCBlockFcn("Outputs", 7, 26, 0, 1, 19)
+%assign tlcOutputsFcnOfS7B27 = OpaqueTLCBlockFcn("Outputs", 7, 27, 0, 1, 20)
+%assign tlcOutputsFcnOfS7B28 = OpaqueTLCBlockFcn("Outputs", 7, 28, 0, 1, 21)
+%assign tlcOutputsFcnOfS7B29 = OpaqueTLCBlockFcn("Outputs", 7, 29, 0, 1, 22)
+%assign tlcOutputsFcnOfS7B30 = OpaqueTLCBlockFcn("Outputs", 7, 30, 0, 1, 23)
+%assign tlcOutputsFcnOfS7B31 = OpaqueTLCBlockFcn("Outputs", 7, 31, 0, 1, 24)
+%assign tlcOutputsFcnOfS7B32 = OpaqueTLCBlockFcn("Outputs", 7, 32, 0, 1, 25)
+%assign tlcOutputsFcnOfS7B33 = OpaqueTLCBlockFcn("Outputs", 7, 33, 0, 1, 26)
+%assign tlcOutputsFcnOfS7B34 = OpaqueTLCBlockFcn("Outputs", 7, 34, 0, 1, 27)
+%assign tlcOutputsFcnOfS7B35 = OpaqueTLCBlockFcn("Outputs", 7, 35, 0, 1, 28)
+%assign tlcOutputsFcnOfS7B36 = OpaqueTLCBlockFcn("Outputs", 7, 36, 0, 1, 29)
+%assign tlcOutputsFcnOfS7B37 = OpaqueTLCBlockFcn("Outputs", 7, 37, 0, 1, 30)
+%assign tlcOutputsFcnOfS7B38 = OpaqueTLCBlockFcn("Outputs", 7, 38, 0, 1, 31)
+%assign tlcOutputsFcnOfS7B39 = OpaqueTLCBlockFcn("Outputs", 7, 39, 0, 1, 32)
+%assign tlcOutputsFcnOfS7B40 = OpaqueTLCBlockFcn("Outputs", 7, 40, 0, 1, 33)
+%assign tlcOutputsFcnOfS7B41 = OpaqueTLCBlockFcn("Outputs", 7, 41, 0, 1, 34)
+%assign tlcOutputsFcnOfS7B42 = OpaqueTLCBlockFcn("Outputs", 7, 42, 0, 1, 35)
+%assign tlcOutputsFcnOfS7B43 = OpaqueTLCBlockFcn("Outputs", 7, 43, 0, 1, 36)
+%assign tlcOutputsFcnOfS7B44 = OpaqueTLCBlockFcn("Outputs", 7, 44, 0, 1, 37)
+%assign tlcOutputsFcnOfS7B45 = OpaqueTLCBlockFcn("Outputs", 7, 45, 0, 1, 38)
+%assign tlcOutputsFcnOfS7B46 = OpaqueTLCBlockFcn("Outputs", 7, 46, 0, 1, 39)
+%<SLibCG_TrackDW(7)>\
+_rtDW = %<(SLibCG_SE(SLibGetDWorkStructPtr()))>;
+%<SLibCG_TrackContStates(7)>\
+_rtX = %<(SLibCG_SE(SLibGetContStatesStructPtr()))>;
+%<SLibCG_TrackParam(7)>\
+_rtP = %<(SLibCG_SE(SLibGetParamStructPtr()))>;
+%<SLibCG_TrackBlockIO(7)>\
+_rtB = %<(SLibCG_SE(SLibGetBlockIOStructPtr()))>;
+_rtB->B_7_0_0 = _rtX->Integrator_CSTATE;
+%<tlcOutputsFcnOfS7B0>\
+_rtB->B_7_1_8 = _rtX->integrator_CSTATE;
+%<tlcOutputsFcnOfS7B1>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_2_16 = _rtP->P_11;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_2_16);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_3_24 = _rtDW->Memory_PreviousInput;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_4_32 = (_rtB->B_7_1_8 - B_7_108_864) * _rtP->P_0;
+} else {
+    _rtB->B_7_4_32 = _rtB->B_7_3_24;
+}
+%<tlcOutputsFcnOfS7B3>\
+_rtB->B_7_5_40 = _rtX->integrator_CSTATE_p;
+%<tlcOutputsFcnOfS7B4>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_6_48 = _rtP->P_16;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_6_48);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_7_56 = _rtDW->Memory_PreviousInput_o;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_8_64 = (_rtB->B_7_5_40 - B_7_110_880) * _rtP->P_2;
+} else {
+    _rtB->B_7_8_64 = _rtB->B_7_7_56;
+}
+%<tlcOutputsFcnOfS7B6>\
+_rtB->B_7_9_72 = _rtX->integrator_CSTATE_f;
+%<tlcOutputsFcnOfS7B7>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_10_80 = _rtP->P_21;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_10_80);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_11_88 = _rtDW->Memory_PreviousInput_b;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_12_96 = (_rtB->B_7_9_72 - B_7_112_896) * _rtP->P_4;
+} else {
+    _rtB->B_7_12_96 = _rtB->B_7_11_88;
+}
+%<tlcOutputsFcnOfS7B9>\
+_rtB->B_7_13_104 = _rtX->integrator_CSTATE_j;
+%<tlcOutputsFcnOfS7B10>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_14_112 = _rtP->P_26;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_14_112);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_15_120 = _rtDW->Memory_PreviousInput_c;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_16_128 = (_rtB->B_7_13_104 - B_7_114_912) * _rtP->P_3;
+} else {
+    _rtB->B_7_16_128 = _rtB->B_7_15_120;
+}
+%<tlcOutputsFcnOfS7B12>\
+_rtB->B_7_17_136 = _rtX->integrator_CSTATE_o;
+%<tlcOutputsFcnOfS7B13>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_18_144 = _rtP->P_31;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_18_144);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_19_152 = _rtDW->Memory_PreviousInput_i;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_20_160 = (_rtB->B_7_17_136 - B_7_116_928) * _rtP->P_6;
+} else {
+    _rtB->B_7_20_160 = _rtB->B_7_19_152;
+}
+%<tlcOutputsFcnOfS7B15>\
+_rtB->B_7_21_168 = _rtX->integrator_CSTATE_l;
+%<tlcOutputsFcnOfS7B16>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_22_176 = _rtP->P_36;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_22_176);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_23_184 = _rtDW->Memory_PreviousInput_iz;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_24_192 = (_rtB->B_7_21_168 - B_7_118_944) * _rtP->P_5;
+} else {
+    _rtB->B_7_24_192 = _rtB->B_7_23_184;
+}
+%<tlcOutputsFcnOfS7B18>\
+_rtB->B_7_25_200 = _rtX->integrator_CSTATE_h;
+%<tlcOutputsFcnOfS7B19>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_26_208 = _rtP->P_41;
+}
+rtb_B_7_136_1088 = (ssGetT(S) >= _rtB->B_7_26_208);
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtB->B_7_27_216 = _rtDW->Memory_PreviousInput_e;
+}
+if (rtb_B_7_136_1088) {
+    _rtB->B_7_28_224 = (_rtB->B_7_25_200 - B_7_120_960) * _rtP->P_1;
+} else {
+    _rtB->B_7_28_224 = _rtB->B_7_27_216;
+}
+%<tlcOutputsFcnOfS7B21>\
+_rtB->B_7_29_232 = _rtX->Integrator_CSTATE_m;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B22>\
+}
+_rtB->B_7_30_240 = _rtX->Integrator_CSTATE_f;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B23>\
+}
+_rtB->B_7_31_248 = _rtX->Integrator_CSTATE_mr;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B24>\
+}
+_rtB->B_7_32_256 = _rtX->Integrator_CSTATE_g;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B25>\
+}
+_rtB->B_7_33_264 = _rtX->Integrator_CSTATE_p;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B26>\
+}
+_rtB->B_7_34_272 = _rtX->Integrator_CSTATE_gw;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B27>\
+}
+_rtB->B_7_35_280 = _rtX->Integrator_CSTATE_c;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B28>\
+}
+_rtB->B_7_36_288 = _rtX->Integrator_CSTATE_e;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B29>\
+%<tlcOutputsFcnOfS7B30>\
+}
+_rtB->B_7_37_296 = _rtX->Integrator_CSTATE_gf;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B31>\
+}
+%<tlcOutputsFcnOfS7B32>\
+%<tlcOutputsFcnOfS7B33>\
+%<tlcOutputsFcnOfS7B34>\
+%<tlcOutputsFcnOfS7B35>\
+%<tlcOutputsFcnOfS7B36>\
+%<tlcOutputsFcnOfS7B37>\
+%<tlcOutputsFcnOfS7B38>\
+_rtB->B_7_38_304 = _rtX->Integrator_CSTATE_l;
+%<tlcOutputsFcnOfS7B39>\
+%<tlcOutputsFcnOfS7B40>\
+%<tlcOutputsFcnOfS7B41>\
+%<tlcOutputsFcnOfS7B42>\
+isHit = ssIsSampleHit(S, 4, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 4);
+    if (ssGetTNextWasAdjusted(S, 4) != 0) {
+        _rtDW->nextTime = _ssGetVarNextHitTime(S, 2);
+    }
+    if (_rtDW->justEnabled != 0) {
+        _rtDW->justEnabled = 0;
+        if (taskTimeV >= _rtP->P_56) {
+            ratio = (taskTimeV - _rtP->P_56) / _rtP->P_54;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_54 + _rtP->P_56) + _rtP->P_55 * _rtP->P_54 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue = 1;
+                _rtDW->nextTime = ratio;
+            } else {
+                _rtDW->currentValue = 0;
+                _rtDW->nextTime = (real_T)(numCycles + 1U) * _rtP->P_54 + _rtP->P_56;
+            }
+        } else {
+            _rtDW->numCompleteCycles = _rtP->P_56 != 0.0 ? -1 : 0;
+            _rtDW->currentValue = 0;
+            _rtDW->nextTime = _rtP->P_56;
+        }
+    } else if (_rtDW->nextTime <= taskTimeV) {
+        if (_rtDW->currentValue == 1) {
+            _rtDW->currentValue = 0;
+            _rtDW->nextTime = (real_T)(_rtDW->numCompleteCycles + 1L) * _rtP->P_54 + _rtP->P_56;
+        } else {
+            _rtDW->numCompleteCycles++;
+            _rtDW->currentValue = 1;
+            _rtDW->nextTime = (_rtP->P_55 * _rtP->P_54 * 0.01 + (real_T)_rtDW->numCompleteCycles * _rtP->P_54) + _rtP->P_56;
+        }
+    }
+    _ssSetVarNextHitTime(S, 2, _rtDW->nextTime);
+    if (_rtDW->currentValue == 1) {
+        _rtB->B_7_39_312 = _rtP->P_53;
+    } else {
+        _rtB->B_7_39_312 = 0.0;
+    }
+}
+_rtB->B_7_40_320 = _rtP->P_57 * _rtB->B_7_31_248;
+_rtB->B_7_41_328 = _rtP->P_58 * _rtB->B_7_29_232;
+_rtB->B_7_42_336 = (_rtB->B_7_39_312 + _rtB->B_7_40_320) - _rtB->B_7_41_328;
+isHit = ssIsSampleHit(S, 3, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 3);
+    if (ssGetTNextWasAdjusted(S, 3) != 0) {
+        _rtDW->nextTime_l = _ssGetVarNextHitTime(S, 1);
+    }
+    if (_rtDW->justEnabled_e != 0) {
+        _rtDW->justEnabled_e = 0;
+        if (taskTimeV >= _rtP->P_62) {
+            ratio = (taskTimeV - _rtP->P_62) / _rtP->P_60;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles_l = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_60 + _rtP->P_62) + _rtP->P_61 * _rtP->P_60 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue_o = 1;
+                _rtDW->nextTime_l = ratio;
+            } else {
+                _rtDW->currentValue_o = 0;
+                _rtDW->nextTime_l = (real_T)(numCycles + 1U) * _rtP->P_60 + _rtP->P_62;
+            }
+        } else {
+            _rtDW->numCompleteCycles_l = _rtP->P_62 != 0.0 ? -1 : 0;
+            _rtDW->currentValue_o = 0;
+            _rtDW->nextTime_l = _rtP->P_62;
+        }
+    } else if (_rtDW->nextTime_l <= taskTimeV) {
+        if (_rtDW->currentValue_o == 1) {
+            _rtDW->currentValue_o = 0;
+            _rtDW->nextTime_l = (real_T)(_rtDW->numCompleteCycles_l + 1L) * _rtP->P_60 + _rtP->P_62;
+        } else {
+            _rtDW->numCompleteCycles_l++;
+            _rtDW->currentValue_o = 1;
+            _rtDW->nextTime_l = (_rtP->P_61 * _rtP->P_60 * 0.01 + (real_T)_rtDW->numCompleteCycles_l * _rtP->P_60) + _rtP->P_62;
+        }
+    }
+    _ssSetVarNextHitTime(S, 1, _rtDW->nextTime_l);
+    if (_rtDW->currentValue_o == 1) {
+        _rtB->B_7_43_344 = _rtP->P_59;
+    } else {
+        _rtB->B_7_43_344 = 0.0;
+    }
+}
+_rtB->B_7_44_352 = _rtP->P_63 * _rtB->B_7_31_248;
+_rtB->B_7_45_360 = _rtP->P_64 * _rtB->B_7_30_240;
+_rtB->B_7_46_368 = (_rtB->B_7_43_344 + _rtB->B_7_44_352) - _rtB->B_7_45_360;
+_rtB->B_7_47_376 = _rtP->P_65 * _rtB->B_7_33_264;
+_rtB->B_7_48_384 = _rtP->P_66 * _rtB->B_7_31_248;
+_rtB->B_7_49_392 = _rtB->B_7_47_376 - _rtB->B_7_48_384;
+_rtB->B_7_50_400 = _rtP->P_67 * _rtB->B_7_35_280;
+_rtB->B_7_51_408 = _rtP->P_68 * _rtB->B_7_38_304;
+_rtB->B_7_52_416 = _rtP->P_69 * _rtB->B_7_32_256;
+_rtB->B_7_53_424 = (_rtB->B_7_50_400 + _rtB->B_7_51_408) - _rtB->B_7_52_416;
+_rtB->B_7_54_432 = _rtP->P_70 * _rtB->B_7_34_272;
+_rtB->B_7_55_440 = _rtP->P_71 * _rtB->B_7_33_264;
+_rtB->B_7_56_448 = _rtB->B_7_54_432 - _rtB->B_7_55_440;
+isHit = ssIsSampleHit(S, 2, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 2);
+    if (ssGetTNextWasAdjusted(S, 2) != 0) {
+        _rtDW->nextTime_i = _ssGetVarNextHitTime(S, 0);
+    }
+    if (_rtDW->justEnabled_d != 0) {
+        _rtDW->justEnabled_d = 0;
+        if (taskTimeV >= _rtP->P_75) {
+            ratio = (taskTimeV - _rtP->P_75) / _rtP->P_73;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles_e = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_73 + _rtP->P_75) + _rtP->P_74 * _rtP->P_73 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue_f = 1;
+                _rtDW->nextTime_i = ratio;
+            } else {
+                _rtDW->currentValue_f = 0;
+                _rtDW->nextTime_i = (real_T)(numCycles + 1U) * _rtP->P_73 + _rtP->P_75;
+            }
+        } else {
+            _rtDW->numCompleteCycles_e = _rtP->P_75 != 0.0 ? -1 : 0;
+            _rtDW->currentValue_f = 0;
+            _rtDW->nextTime_i = _rtP->P_75;
+        }
+    } else if (_rtDW->nextTime_i <= taskTimeV) {
+        if (_rtDW->currentValue_f == 1) {
+            _rtDW->currentValue_f = 0;
+            _rtDW->nextTime_i = (real_T)(_rtDW->numCompleteCycles_e + 1L) * _rtP->P_73 + _rtP->P_75;
+        } else {
+            _rtDW->numCompleteCycles_e++;
+            _rtDW->currentValue_f = 1;
+            _rtDW->nextTime_i = (_rtP->P_74 * _rtP->P_73 * 0.01 + (real_T)_rtDW->numCompleteCycles_e * _rtP->P_73) + _rtP->P_75;
+        }
+    }
+    _ssSetVarNextHitTime(S, 0, _rtDW->nextTime_i);
+    if (_rtDW->currentValue_f == 1) {
+        _rtB->B_7_57_456 = _rtP->P_72;
+    } else {
+        _rtB->B_7_57_456 = 0.0;
+    }
+}
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B43>\
+}
+_rtB->B_7_58_464 = _rtP->P_76 * _rtB->B_7_34_272;
+_rtB->B_7_59_472 = _rtP->P_77 * _rtB->B_7_31_248;
+_rtB->B_7_60_480 = _rtP->P_78 * _rtB->B_7_30_240;
+_rtB->B_7_61_488 = _rtP->P_79 * _rtB->B_7_29_232;
+_rtB->B_7_62_496 = (((_rtB->B_7_59_472 - _rtB->B_7_58_464) + _rtB->B_7_57_456) + _rtB->B_7_60_480) + _rtB->B_7_61_488;
+_rtB->B_7_63_504 = _rtP->P_80 * _rtB->B_7_34_272;
+_rtB->B_7_64_512 = _rtP->P_81 * _rtB->B_7_33_264;
+_rtB->B_7_65_520 = _rtB->B_7_63_504 - _rtB->B_7_64_512;
+_rtB->B_7_66_528 = _rtP->P_82 * _rtB->B_7_31_248;
+_rtB->B_7_67_536 = _rtP->P_83 * _rtB->B_7_29_232;
+_rtB->B_7_68_544 = _rtB->B_7_66_528 - _rtB->B_7_67_536;
+_rtB->B_7_69_552 = _rtP->P_84 * _rtB->B_7_31_248;
+_rtB->B_7_70_560 = _rtP->P_85 * _rtB->B_7_32_256;
+_rtB->B_7_71_568 = _rtP->P_86 * _rtB->B_7_38_304;
+_rtB->B_7_72_576 = (_rtB->B_7_69_552 + _rtB->B_7_70_560) - _rtB->B_7_71_568;
+_rtB->B_7_73_584 = _rtP->P_87 * _rtB->B_7_35_280;
+_rtB->B_7_74_592 = _rtP->P_88 * _rtB->B_7_38_304;
+_rtB->B_7_75_600 = _rtP->P_89 * _rtB->B_7_32_256;
+_rtB->B_7_76_608 = (_rtB->B_7_73_584 + _rtB->B_7_74_592) - _rtB->B_7_75_600;
+_rtB->B_7_77_616 = _rtP->P_90 * _rtB->B_7_37_296;
+_rtB->B_7_78_624 = _rtP->P_91 * _rtB->B_7_35_280;
+_rtB->B_7_79_632 = _rtB->B_7_77_616 - _rtB->B_7_78_624;
+_rtB->B_7_80_640 = _rtP->P_92 * _rtB->B_7_33_264;
+_rtB->B_7_81_648 = _rtP->P_93 * _rtB->B_7_31_248;
+_rtB->B_7_82_656 = _rtB->B_7_80_640 - _rtB->B_7_81_648;
+isHit = ssIsSampleHit(S, 7, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 7);
+    if (ssGetTNextWasAdjusted(S, 7) != 0) {
+        _rtDW->nextTime_if = _ssGetVarNextHitTime(S, 5);
+    }
+    if (_rtDW->justEnabled_m != 0) {
+        _rtDW->justEnabled_m = 0;
+        if (taskTimeV >= _rtP->P_97) {
+            ratio = (taskTimeV - _rtP->P_97) / _rtP->P_95;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles_f = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_95 + _rtP->P_97) + _rtP->P_96 * _rtP->P_95 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue_d = 1;
+                _rtDW->nextTime_if = ratio;
+            } else {
+                _rtDW->currentValue_d = 0;
+                _rtDW->nextTime_if = (real_T)(numCycles + 1U) * _rtP->P_95 + _rtP->P_97;
+            }
+        } else {
+            _rtDW->numCompleteCycles_f = _rtP->P_97 != 0.0 ? -1 : 0;
+            _rtDW->currentValue_d = 0;
+            _rtDW->nextTime_if = _rtP->P_97;
+        }
+    } else if (_rtDW->nextTime_if <= taskTimeV) {
+        if (_rtDW->currentValue_d == 1) {
+            _rtDW->currentValue_d = 0;
+            _rtDW->nextTime_if = (real_T)(_rtDW->numCompleteCycles_f + 1L) * _rtP->P_95 + _rtP->P_97;
+        } else {
+            _rtDW->numCompleteCycles_f++;
+            _rtDW->currentValue_d = 1;
+            _rtDW->nextTime_if = (_rtP->P_96 * _rtP->P_95 * 0.01 + (real_T)_rtDW->numCompleteCycles_f * _rtP->P_95) + _rtP->P_97;
+        }
+    }
+    _ssSetVarNextHitTime(S, 5, _rtDW->nextTime_if);
+    if (_rtDW->currentValue_d == 1) {
+        _rtB->B_7_83_664 = _rtP->P_94;
+    } else {
+        _rtB->B_7_83_664 = 0.0;
+    }
+}
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B44>\
+}
+_rtB->B_7_84_672 = _rtP->P_98 * _rtB->B_7_37_296;
+_rtB->B_7_85_680 = _rtP->P_99 * _rtB->B_7_32_256;
+_rtB->B_7_86_688 = _rtP->P_100 * _rtB->B_7_36_288;
+_rtB->B_7_87_696 = _rtP->P_101 * _rtB->B_7_0_0;
+_rtB->B_7_88_704 = (((_rtB->B_7_84_672 + _rtB->B_7_85_680) + _rtB->B_7_86_688) - _rtB->B_7_83_664) - _rtB->B_7_87_696;
+_rtB->B_7_89_712 = _rtP->P_102 * _rtB->B_7_31_248;
+_rtB->B_7_90_720 = _rtP->P_103 * _rtB->B_7_32_256;
+_rtB->B_7_91_728 = _rtP->P_104 * _rtB->B_7_38_304;
+_rtB->B_7_92_736 = (_rtB->B_7_89_712 + _rtB->B_7_90_720) - _rtB->B_7_91_728;
+_rtB->B_7_93_744 = _rtP->P_105 * _rtB->B_7_37_296;
+_rtB->B_7_94_752 = _rtP->P_106 * _rtB->B_7_35_280;
+_rtB->B_7_95_760 = _rtB->B_7_93_744 - _rtB->B_7_94_752;
+_rtB->B_7_96_768 = _rtP->P_107 * _rtB->B_7_33_264;
+_rtB->B_7_97_776 = _rtP->P_108 * _rtB->B_7_36_288;
+_rtB->B_7_98_784 = _rtB->B_7_96_768 - _rtB->B_7_97_776;
+_rtB->B_7_99_792 = _rtP->P_109 * _rtB->B_7_37_296;
+_rtB->B_7_100_800 = _rtP->P_110 * _rtB->B_7_32_256;
+_rtB->B_7_101_808 = _rtP->P_111 * _rtB->B_7_36_288;
+isHit = ssIsSampleHit(S, 6, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 6);
+    if (ssGetTNextWasAdjusted(S, 6) != 0) {
+        _rtDW->nextTime_o = _ssGetVarNextHitTime(S, 4);
+    }
+    if (_rtDW->justEnabled_i != 0) {
+        _rtDW->justEnabled_i = 0;
+        if (taskTimeV >= _rtP->P_115) {
+            ratio = (taskTimeV - _rtP->P_115) / _rtP->P_113;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles_lt = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_113 + _rtP->P_115) + _rtP->P_114 * _rtP->P_113 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue_b = 1;
+                _rtDW->nextTime_o = ratio;
+            } else {
+                _rtDW->currentValue_b = 0;
+                _rtDW->nextTime_o = (real_T)(numCycles + 1U) * _rtP->P_113 + _rtP->P_115;
+            }
+        } else {
+            _rtDW->numCompleteCycles_lt = _rtP->P_115 != 0.0 ? -1 : 0;
+            _rtDW->currentValue_b = 0;
+            _rtDW->nextTime_o = _rtP->P_115;
+        }
+    } else if (_rtDW->nextTime_o <= taskTimeV) {
+        if (_rtDW->currentValue_b == 1) {
+            _rtDW->currentValue_b = 0;
+            _rtDW->nextTime_o = (real_T)(_rtDW->numCompleteCycles_lt + 1L) * _rtP->P_113 + _rtP->P_115;
+        } else {
+            _rtDW->numCompleteCycles_lt++;
+            _rtDW->currentValue_b = 1;
+            _rtDW->nextTime_o = (_rtP->P_114 * _rtP->P_113 * 0.01 + (real_T)_rtDW->numCompleteCycles_lt * _rtP->P_113) + _rtP->P_115;
+        }
+    }
+    _ssSetVarNextHitTime(S, 4, _rtDW->nextTime_o);
+    if (_rtDW->currentValue_b == 1) {
+        _rtB->B_7_102_816 = _rtP->P_112;
+    } else {
+        _rtB->B_7_102_816 = 0.0;
+    }
+}
+_rtB->B_7_103_824 = _rtP->P_116 * _rtB->B_7_0_0;
+_rtB->B_7_104_832 = (((_rtB->B_7_99_792 + _rtB->B_7_100_800) + _rtB->B_7_101_808) - _rtB->B_7_102_816) - _rtB->B_7_103_824;
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+%<tlcOutputsFcnOfS7B45>\
+%<tlcOutputsFcnOfS7B46>\
+}
+isHit = ssIsSampleHit(S, 5, 0);
+if (isHit != 0) {
+    taskTimeV = ssGetTaskTime(S, 5);
+    if (ssGetTNextWasAdjusted(S, 5) != 0) {
+        _rtDW->nextTime_f = _ssGetVarNextHitTime(S, 3);
+    }
+    if (_rtDW->justEnabled_f != 0) {
+        _rtDW->justEnabled_f = 0;
+        if (taskTimeV >= _rtP->P_120) {
+            ratio = (taskTimeV - _rtP->P_120) / _rtP->P_118;
+            numCycles = (uint32_T)muDoubleScalarFloor(ratio);
+            if (muDoubleScalarAbs((real_T)(numCycles + 1U) - ratio) < DBL_EPSILON * ratio) {
+                numCycles++;
+            }
+            _rtDW->numCompleteCycles_p = numCycles;
+            ratio = ((real_T)numCycles * _rtP->P_118 + _rtP->P_120) + _rtP->P_119 * _rtP->P_118 / 100.0;
+            if (taskTimeV < ratio) {
+                _rtDW->currentValue_k = 1;
+                _rtDW->nextTime_f = ratio;
+            } else {
+                _rtDW->currentValue_k = 0;
+                _rtDW->nextTime_f = (real_T)(numCycles + 1U) * _rtP->P_118 + _rtP->P_120;
+            }
+        } else {
+            _rtDW->numCompleteCycles_p = _rtP->P_120 != 0.0 ? -1 : 0;
+            _rtDW->currentValue_k = 0;
+            _rtDW->nextTime_f = _rtP->P_120;
+        }
+    } else if (_rtDW->nextTime_f <= taskTimeV) {
+        if (_rtDW->currentValue_k == 1) {
+            _rtDW->currentValue_k = 0;
+            _rtDW->nextTime_f = (real_T)(_rtDW->numCompleteCycles_p + 1L) * _rtP->P_118 + _rtP->P_120;
+        } else {
+            _rtDW->numCompleteCycles_p++;
+            _rtDW->currentValue_k = 1;
+            _rtDW->nextTime_f = (_rtP->P_119 * _rtP->P_118 * 0.01 + (real_T)_rtDW->numCompleteCycles_p * _rtP->P_118) + _rtP->P_120;
+        }
+    }
+    _ssSetVarNextHitTime(S, 3, _rtDW->nextTime_f);
+    if (_rtDW->currentValue_k == 1) {
+        _rtB->B_7_105_840 = _rtP->P_117;
+    } else {
+        _rtB->B_7_105_840 = 0.0;
+    }
+}
+_rtB->B_7_106_848 = _rtP->P_121 * _rtB->B_7_37_296;
+_rtB->B_7_107_856 = _rtB->B_7_105_840 - _rtB->B_7_106_848;
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(0, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 1, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs0(\
+%assign comma = ""
+%<comma>%<::tSimStructType> *S\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Outputs0", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

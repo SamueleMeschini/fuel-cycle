@@ -1,0 +1,86 @@
+%implements s7_b0_z4vkg_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+B_fuelCycle_T *_rtB;
+DW_fuelCycle_T *_rtDW;
+P_fuelCycle_T *_rtP;
+int32_T isHit;
+%closefile localVarDecl
+%assign tlcUpdateFcnOfS7B1 = OpaqueTLCBlockFcn("Update", 7, 1, 0, 2, 0)
+%assign tlcUpdateFcnOfS7B4 = OpaqueTLCBlockFcn("Update", 7, 4, 0, 2, 1)
+%assign tlcUpdateFcnOfS7B7 = OpaqueTLCBlockFcn("Update", 7, 7, 0, 2, 2)
+%assign tlcUpdateFcnOfS7B10 = OpaqueTLCBlockFcn("Update", 7, 10, 0, 2, 3)
+%assign tlcUpdateFcnOfS7B13 = OpaqueTLCBlockFcn("Update", 7, 13, 0, 2, 4)
+%assign tlcUpdateFcnOfS7B16 = OpaqueTLCBlockFcn("Update", 7, 16, 0, 2, 5)
+%assign tlcUpdateFcnOfS7B19 = OpaqueTLCBlockFcn("Update", 7, 19, 0, 2, 6)
+%<SLibCG_TrackDW(7)>\
+_rtDW = %<(SLibCG_SE(SLibGetDWorkStructPtr()))>;
+_rtP = %<(SLibCG_SE(SLibGetParamStructPtr()))>;
+%<SLibCG_TrackBlockIO(7)>\
+_rtB = %<(SLibCG_SE(SLibGetBlockIOStructPtr()))>;
+%<tlcUpdateFcnOfS7B1>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput = _rtB->B_7_4_32;
+}
+%<tlcUpdateFcnOfS7B4>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_o = _rtB->B_7_8_64;
+}
+%<tlcUpdateFcnOfS7B7>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_b = _rtB->B_7_12_96;
+}
+%<tlcUpdateFcnOfS7B10>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_c = _rtB->B_7_16_128;
+}
+%<tlcUpdateFcnOfS7B13>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_i = _rtB->B_7_20_160;
+}
+%<tlcUpdateFcnOfS7B16>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_iz = _rtB->B_7_24_192;
+}
+%<tlcUpdateFcnOfS7B19>\
+isHit = ssIsSampleHit(S, 1, 0);
+if (isHit != 0) {
+    _rtDW->Memory_PreviousInput_e = _rtB->B_7_28_224;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Update", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Update"))
+%<SLibCG_AccessArg(0, 2, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 2, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Update", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Update"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 2, 0)>
+%endif
+%<LibSetSystemField(system, "CachedUpdateLocalVars", localVarDecl)>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update0(\
+%assign comma = ""
+%<comma>%<::tSimStructType> *S\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Update0", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction

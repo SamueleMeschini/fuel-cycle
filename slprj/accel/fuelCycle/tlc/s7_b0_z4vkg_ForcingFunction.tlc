@@ -1,0 +1,61 @@
+%implements s7_b0_z4vkg_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+B_fuelCycle_T *_rtB;
+XDot_fuelCycle_T *_rtXdot;
+%closefile localVarDecl
+%<SLibCG_TrackContStatesDerivative(7)>\
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+%<SLibCG_TrackBlockIO(7)>\
+_rtB = %<(SLibCG_SE(SLibGetBlockIOStructPtr()))>;
+_rtXdot->Integrator_CSTATE = _rtB->B_7_104_832;
+_rtXdot->integrator_CSTATE = _rtB->B_7_65_520;
+_rtXdot->integrator_CSTATE_p = _rtB->B_7_72_576;
+_rtXdot->integrator_CSTATE_f = _rtB->B_7_79_632;
+_rtXdot->integrator_CSTATE_j = _rtB->B_7_76_608;
+_rtXdot->integrator_CSTATE_o = _rtB->B_7_88_704;
+_rtXdot->integrator_CSTATE_l = _rtB->B_7_82_656;
+_rtXdot->integrator_CSTATE_h = _rtB->B_7_68_544;
+_rtXdot->Integrator_CSTATE_m = _rtB->B_7_42_336;
+_rtXdot->Integrator_CSTATE_f = _rtB->B_7_46_368;
+_rtXdot->Integrator_CSTATE_mr = _rtB->B_7_49_392;
+_rtXdot->Integrator_CSTATE_g = _rtB->B_7_53_424;
+_rtXdot->Integrator_CSTATE_p = _rtB->B_7_56_448;
+_rtXdot->Integrator_CSTATE_gw = _rtB->B_7_62_496;
+_rtXdot->Integrator_CSTATE_c = _rtB->B_7_95_760;
+_rtXdot->Integrator_CSTATE_e = _rtB->B_7_98_784;
+_rtXdot->Integrator_CSTATE_gf = _rtB->B_7_107_856;
+_rtXdot->Integrator_CSTATE_l = _rtB->B_7_92_736;
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("ForcingFunction", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "ForcingFunction"))
+%<SLibCG_AccessArg(0, 4, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 4, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "ForcingFunction", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "ForcingFunction"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 4, 0)>
+%endif
+%<LibSetSystemField(system, "CachedForcingFunctionLocalVars", localVarDecl)>
+%endfunction
+%function ForcingFunctionFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ForcingFunction(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 4, 0)
+%<comma>%<::tSimStructType> *S\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("ForcingFunction", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%endfunction

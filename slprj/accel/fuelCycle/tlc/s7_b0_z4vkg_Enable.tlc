@@ -1,0 +1,62 @@
+%implements s7_b0_z4vkg_Enable "C"
+
+%function Enable(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+DW_fuelCycle_T *_rtDW;
+%closefile localVarDecl
+%<SLibCG_TrackDW(7)>\
+_rtDW = %<(SLibCG_SE(SLibGetDWorkStructPtr()))>;
+_rtDW->justEnabled = 1;
+_ssSetSampleHit(S, 4, 1);
+_ssSetTaskTime(S, 4, ssGetT(S));
+_ssSetVarNextHitTime(S, 2, ssGetT(S));
+_rtDW->justEnabled_e = 1;
+_ssSetSampleHit(S, 3, 1);
+_ssSetTaskTime(S, 3, ssGetT(S));
+_ssSetVarNextHitTime(S, 1, ssGetT(S));
+_rtDW->justEnabled_d = 1;
+_ssSetSampleHit(S, 2, 1);
+_ssSetTaskTime(S, 2, ssGetT(S));
+_ssSetVarNextHitTime(S, 0, ssGetT(S));
+_rtDW->justEnabled_m = 1;
+_ssSetSampleHit(S, 7, 1);
+_ssSetTaskTime(S, 7, ssGetT(S));
+_ssSetVarNextHitTime(S, 5, ssGetT(S));
+_rtDW->justEnabled_i = 1;
+_ssSetSampleHit(S, 6, 1);
+_ssSetTaskTime(S, 6, ssGetT(S));
+_ssSetVarNextHitTime(S, 4, ssGetT(S));
+_rtDW->justEnabled_f = 1;
+_ssSetSampleHit(S, 5, 1);
+_ssSetTaskTime(S, 5, ssGetT(S));
+_ssSetVarNextHitTime(S, 3, ssGetT(S));
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Enable", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Enable"))
+%<SLibCG_AccessArg(0, 5, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 5, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Enable", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Enable"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 5, 0)>
+%endif
+%<LibSetSystemField(system, "CachedEnableLocalVars", localVarDecl)>
+%endfunction
+%function EnableFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Enable(\
+%assign comma = ""
+%<comma>%<::tSimStructType> *S\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("Enable", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
+%endfunction

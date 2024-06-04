@@ -1,0 +1,74 @@
+%implements s7_b0_z4vkg_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+DW_fuelCycle_T *_rtDW;
+P_fuelCycle_T *_rtP;
+X_fuelCycle_T *_rtX;
+%closefile localVarDecl
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCG_TrackDW(7)>\
+_rtDW = %<(SLibCG_SE(SLibGetDWorkStructPtr()))>;
+%<SLibCG_TrackContStates(7)>\
+_rtX = %<(SLibCG_SE(SLibGetContStatesStructPtr()))>;
+%<SLibCG_TrackParam(7)>\
+_rtP = %<(SLibCG_SE(SLibGetParamStructPtr()))>;
+_rtX->Integrator_CSTATE = _rtP->P_7;
+_rtX->integrator_CSTATE = _rtP->P_8;
+_rtDW->Memory_PreviousInput = _rtP->P_12;
+_rtX->integrator_CSTATE_p = _rtP->P_13;
+_rtDW->Memory_PreviousInput_o = _rtP->P_17;
+_rtX->integrator_CSTATE_f = _rtP->P_18;
+_rtDW->Memory_PreviousInput_b = _rtP->P_22;
+_rtX->integrator_CSTATE_j = _rtP->P_23;
+_rtDW->Memory_PreviousInput_c = _rtP->P_27;
+_rtX->integrator_CSTATE_o = _rtP->P_28;
+_rtDW->Memory_PreviousInput_i = _rtP->P_32;
+_rtX->integrator_CSTATE_l = _rtP->P_33;
+_rtDW->Memory_PreviousInput_iz = _rtP->P_37;
+_rtX->integrator_CSTATE_h = _rtP->P_38;
+_rtDW->Memory_PreviousInput_e = _rtP->P_42;
+_rtX->Integrator_CSTATE_m = _rtP->P_43;
+_rtX->Integrator_CSTATE_f = _rtP->P_44;
+_rtX->Integrator_CSTATE_mr = _rtP->P_45;
+_rtX->Integrator_CSTATE_g = _rtP->P_46;
+_rtX->Integrator_CSTATE_p = _rtP->P_47;
+_rtX->Integrator_CSTATE_gw = _rtP->P_48;
+_rtX->Integrator_CSTATE_c = _rtP->P_49;
+_rtX->Integrator_CSTATE_e = _rtP->P_50;
+_rtX->Integrator_CSTATE_gf = _rtP->P_51;
+_rtX->Integrator_CSTATE_l = _rtP->P_52;
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[0].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("SystemInitialize", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))
+%<SLibCG_AccessArg(0, 0, 0)>
+%endif
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "SystemInitialize", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "SystemInitialize"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(0, 0, 0)>
+%endif
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void SystemInitialize(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(0, 0, 0)
+%<comma>%<::tSimStructType> *S\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("SystemInitialize", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction

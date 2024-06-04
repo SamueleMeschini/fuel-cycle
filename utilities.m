@@ -73,6 +73,7 @@ classdef utilities
                         I_bz = out.I_1;
                         I_tes = out.I_2;
                         I_hx = out.I_5;
+                        I_fw = out.I_3;
                         iteration = iteration + 1;
                         disp(iteration)
                         t_d = utilities.doublingTime(I_s_0, out);
@@ -80,6 +81,7 @@ classdef utilities
                         blanket_inventory = (max(I_bz)); % kg
                         tes_inventory = (max(I_tes)); % kg
                         HX_inventory = (max(I_hx)); % kg
+                        FW_inventory = (max(I_fw));
                         bz_trapped_inventory = out.I_1_trapped(end); % kg
                         Div_trapped_inventory = out.I_4_trapped(end); % kg
                         FW_trapped_inventory = out.I_3_trapped(end); %kg
@@ -101,6 +103,8 @@ classdef utilities
                         disp("Blanket inventory: " + round(max(I_bz + bz_trapped_inventory)*1000, 2) + " g")
                         disp("TES inventory: " + round(max(I_tes)*1000, 2)  + " g")
                         disp("HX inventory: " + round(max(HX_inventory)*1000, 2)  + " g")
+                        disp("FW/VV inventory: " + round(max(FW_inventory + FW_trapped_inventory)*1000, 2) + " g")
+
 
                         if iteration == 1000            
                             iteration = 0;
