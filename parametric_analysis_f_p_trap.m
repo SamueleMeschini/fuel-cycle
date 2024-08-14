@@ -1,5 +1,5 @@
 f_p = [1e-4, 1e-3, 1e-2, 1e-1]; % Fraction of plasma to the walls and divertor
-TBE_array = [1]/100; % TBE [-]
+TBE_array = [5]/100; % TBE [-]
 
 for j=1:numel(TBE_array)
     TBE = TBE_array(j);
@@ -10,9 +10,9 @@ for j=1:numel(TBE_array)
         elseif TBE == 0.01
             TBR = 1.15;
         elseif TBE == 0.02
-            TBR = 1.08;
+            TBR = 1.087;
         else
-            TBR = 1.05;           
+            TBR = 1.048;           
         end
         I_s_0 = 0.8; 
         fp3 = f_p(i) ;

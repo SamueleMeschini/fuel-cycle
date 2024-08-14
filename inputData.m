@@ -26,7 +26,8 @@ T7 = 1/((1 + epsi)/tau7 + lambda); % Vacuum pump
 T8 = 1/((1 + epsi)/tau8 + lambda); % Fuel clean-up
 T9 = 1/((1 + epsi)/tau9 + lambda); % ISS
 T12 = 1/((1 + epsi)/tau12 + lambda);
-T_replacement = 100*8760*3600; % VV replacement time
+
+T_replacement = 1.7*8760*3600; % VV replacement time
 MTTR = 90 * 24 * 3600;
 T_restart = T_replacement + MTTR;
 Recover_length = 30 * 24 * 8760;
@@ -50,7 +51,7 @@ f_dir = 0.3; % DIR fraction
 
 % Components' efficiency
 eta2 = 0.95;
-eta6 = 0.95;
+%eta6 = 0.95;
 % General parameters
 N_dot = 9.3e-7; % Tritium burnt [kg/s]
 TBE = 0.02; % burnup fraction
@@ -61,6 +62,6 @@ t_res = 3600 * 24; % reserve time
 AF = 70; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
 t_d = 2;
-T_deliver = t_d * 365 * 24 * 3600 - 1 * 24 * 3600;
+T_deliver = 5 * t_d * 365 * 24 * 3600 - 1 * 24 * 3600;
 
     

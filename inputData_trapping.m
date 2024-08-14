@@ -15,7 +15,7 @@ layer_thickness_induced_traps = 2.5e-6; % m
 FW_thickness = 1e-3; % m
 rho_tungsten = 19.3; %g/cm3
 V_tungsten = 0.35e6; % cm3
-T_tungsten = 500; % K
+T_tungsten = 1000; % K
 n_tungsten = (rho_tungsten*1e6) / PM_tungsten * N_a; % m^-3
 E_trap_W_intrinsic = 1; % eV
 E_trap_W_extrinsic = [1.15, 1.35, 1.65, 1.85, 2.05]; % eV
@@ -44,7 +44,7 @@ m_u = 1.6e-27;
 M_tungsten = V_tungsten * rho_tungsten/1e3; % kg
 
 % V-Cr-Ti 
-T_structural = 500; % K 
+T_structural = 900; % K 
 
 rho_vcrti = 6.1; % V-Cr-Ti alloy g/cm3 - REF: D.L. Smith, et al., 
 % Vanadium-base alloys for fusion reactor applications — a review, 
@@ -77,17 +77,17 @@ n_trap_eurofer = 1.3e25/n_eurofer;
 n_solute_eurofer = 6;
 
 
-PM_structural = PM_eurofer;
-rho_structural = rho_eurofer;
+PM_structural = PM_vcrti;
+rho_structural = rho_vcrti;
 V_structural = 3.5e6; % cm3 - REF: D. Pettinari
-nu_detrap_structural = nu_0 * exp(-E_trap_eurofer/(k_B * T_structural)); % detrapping rate
+nu_detrap_structural = nu_0 * exp(-E_trap_vcrti/(k_B * T_structural)); % detrapping rate
 tau_detrap_structural = 1 / nu_detrap_structural* relaxation_coefficient;
-D_structural = D_eurofer;
-a_structural = a_eurofer; % m - lattice constant. REF: I Kurzina et al 2019 J. Phys.: Conf. Ser. 1145 012051
+D_structural = D_vcrti;
+a_structural = a_vcrti; % m - lattice constant. REF: I Kurzina et al 2019 J. Phys.: Conf. Ser. 1145 012051
 dd_structural = a_structural/2/sqrt(2);
 nu_trap_structural = D_structural / dd_structural^2;
 tau_trap_structural = 1/nu_trap_structural * relaxation_coefficient;
 n_structural = (rho_structural*1e6) / PM_structural * N_a;
-n_solute_structural = n_solute_eurofer; % Available site for mobile tritium - Assume that V-Cr-TI is BCC
-n_trap_structural= n_trap_eurofer;
+n_solute_structural = n_solute_vcrti; % Available site for mobile tritium - Assume that V-Cr-TI is BCC
+n_trap_structural= n_trap_vcrti;
 M_structural = V_structural * rho_structural/1e3; % kg

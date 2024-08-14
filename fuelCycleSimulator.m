@@ -14,15 +14,15 @@ if trapping
     model = 'fuelCycle_w_trapping_multilevel.slx';
     run('inputData_trapping.m')
 else
-    model = "fuelCycle.slx";
+    model = "fuelCycle_avg_AF.slx";
 end
-TBR_accuracy= 0.002; % accuracy when computing the required TBR 
+TBR_accuracy= 0.001; % accuracy when computing the required TBR 
 inventory_accuracy = 0.01; % accuracy when computing start-up inventory [kg]
-sim_time = 2.1*8760*3600; % simulation time [s]
+sim_time = 2.5*8760*3600; % simulation time [s]
 runMode = "iteration"   % single, iteration or parametric analysis
 parametric_variable = 'f_p_trap'; % name of the variable if performing parametric analysis
 
-TBR = 1.126% TBR - If runMode = "single" this is fixed
+TBR = 1.096 % TBR - If runMode = "single" this is fixed
             %       If runMode = "iteration" this is the initial guess
 I_s_0 = 1.85; % startup inventory [kg] - If runMode = "single" this is fixed
              %                          If runMode = "iteration" this is the initial guess             
@@ -31,6 +31,7 @@ I_s_0 = 1.85; % startup inventory [kg] - If runMode = "single" this is fixed
 % TBR and the start-up inventory for a given configuration, and then run a
 % "single" simulation to extract the inventories (and wathever variable required) from the model. 
 
+% disp('ATTENTION: ')
 
 if strcmp(runMode,"single")
     %Single simulation with fixed TBR and start-up inventory

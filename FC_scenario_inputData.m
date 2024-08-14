@@ -53,6 +53,6 @@ TBE = 0.02; % Tritium burn efficiency
 % Reserve inventory
 q = 0.25; % fraction of FC failing
 t_res = 3600 * 24; % reserve time
-AF = 90; % for AF_model, use 0-100, for non AF_models, use 0-1;
+AF = 0.90; % for AF_model, use 0-100, for non AF_models, use 0-1;
 I_reserve = N_dot / TBE * q * t_res; %  reserve inventory [kg]
-t_d = 1;
+t_d = 2;
